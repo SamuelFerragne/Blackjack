@@ -1,0 +1,22 @@
+plugins {
+    id 'eclipse'
+    id 'org.openjfx.javafxplugin'
+}
+
+javafx {
+    version = "19"
+    modules = [ 'javafx.base', 'javafx.controls', 'javafx.fxml', 'javafx.graphics', 'javafx.media', 'javafx.swing'  ]
+}
+
+eclipse {
+    classpath {
+        file {
+            whenMerged {
+                classpath ->
+
+                    def jre = entries.find { it.path.contains 'org.eclipse.jdt.launching.JRE_CONTAINER' }
+                    jre.accessRules.add(new org.gradle.plugins.ide.eclipse.model.AccessRule('accessible', 'javafx/**'))
+            }
+        }
+    }
+}

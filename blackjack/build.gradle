@@ -1,0 +1,60 @@
+plugins {
+    id 'localJavaPlugin'
+    id 'localFxPlugin'
+}
+
+dependencies {
+    ntroDependencies.split(',').each {
+        implementation "ca.ntro:ntro_${it}:${version}"
+    }
+}
+
+eclipse {
+    classpath {
+        file {
+            whenMerged {
+                classpath ->
+
+                    def toRemove = []
+                    def toAdd = []
+
+                    entries.each {
+
+                        if(ntroDependencies.split(',').any{dependency -> it.path.equals("/ntro_"+dependency)}){
+                            toRemove += it
+                            toAdd += new org.gradle.plugins.ide.eclipse.model.Library(fileReference(file(it.publication.path)))
+                        }
+                    }
+
+                    entries.removeAll toRemove
+                    entries.addAll toAdd
+            }
+        }
+    }
+}
+
+def commonConfig = {
+   classpath = sourceSets.main.runtimeClasspath
+   standardInput = System.in
+   jvmArgs('-Dfile.encoding=UTF-8')
+}
+
+def localConfig = {
+   configure commonConfig
+   main = "mon_projet.MonProjetLocal"
+   jvmArgs('-Dsun.java2d.opengl=true')
+}
+
+task(local, dependsOn: 'classes', type: JavaExec) {
+   configure localConfig
+}
+
+task(localFr, dependsOn: 'classes', type: JavaExec) {
+   configure localConfig
+   jvmArgs('-Duser.language=fr')
+}
+
+task(localEn, dependsOn: 'classes', type: JavaExec) {
+   configure localConfig
+   jvmArgs('-Duser.language=en')
+}

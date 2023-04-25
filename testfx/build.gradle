@@ -1,0 +1,26 @@
+plugins {
+    id 'localJavaPlugin'
+    id 'localFxPlugin'
+}
+
+dependencies {
+
+    implementation "ca.ntro:testfx:${version}"
+
+}
+
+def commonConfig = {
+   classpath = sourceSets.main.runtimeClasspath
+   standardInput = System.in
+   jvmArgs('-Dfile.encoding=UTF-8')
+}
+
+def localConfig = {
+   configure commonConfig
+   main = "ca.ntro.test.TestFx"
+   jvmArgs('-Dsun.java2d.opengl=true')
+}
+
+task(testfx, dependsOn: 'classes', type: JavaExec) {
+   configure localConfig
+}

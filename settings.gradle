@@ -1,0 +1,26 @@
+rootProject.name = '4f5_prenom_nom'
+
+include 'testfx'
+include 'pong'
+include 'mon_projet'
+
+buildscript {
+    repositories {
+	    mavenCentral()
+	    maven {url "https://plugins.gradle.org/m2/"}
+    }
+
+    dependencies {
+        classpath 'org.openjfx:javafx-plugin:0.0.13'
+    }
+}
+
+sourceControl {
+    gitRepository("https://gitlab.com/mathieu-bergeron/ca.ntro.git") {
+        ntroDependencies.split(',').each {
+            producesModule("ca.ntro:ntro_${it}")
+        }
+
+        producesModule("ca.ntro:testfx")
+    }
+}

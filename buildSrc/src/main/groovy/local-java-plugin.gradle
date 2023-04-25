@@ -1,0 +1,48 @@
+import org.gradle.plugins.ide.eclipse.model.SourceFolder;
+
+plugins {
+    id 'java'
+    id 'eclipse'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+    [compileJava, compileTestJava]*.options*.compilerArgs = ['-parameters']
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.slf4j:slf4j-nop:1.7.30'
+    //implementation 'org.slf4j:slf4j-simple:1.7.30'
+}
+
+tasks.clean {
+    doFirst {
+        new File("${project.projectDir}/build").deleteDir()
+        new File("${project.projectDir}/bin").deleteDir()
+    }
+}
+
+sourceSets {
+    test {
+        java {
+            srcDirs = ["src/main/java"]
+        }
+    }
+}
+
+eclipse {
+    classpath {
+        file {
+            whenMerged {
+                entries = entries.findAll { it instanceof SourceFolder ? ((SourceFolder)it).output != "bin/test" : true }
+            }
+        }
+    }
+}
+
+tasks.eclipse.dependsOn(build)
