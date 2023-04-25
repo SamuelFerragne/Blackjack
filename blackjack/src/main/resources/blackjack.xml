@@ -1,0 +1,40 @@
+
+<?import blackjack.frontal.controles.CanvasPartie?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+    fx:controller="blackjack.frontal.vues.VueBlackjack" 
+    styleClass="conteneur"
+    id="vue-partie">
+
+    <Pane styleClass="petit-espace-vertical"/>
+
+    <HBox VBox.vgrow="ALWAYS" styleClass="conteneur">
+
+        <Pane styleClass="petit-espace-horizontal"/>
+
+        <CanvasPartie 
+            HBox.hgrow="ALWAYS" 
+            fx:id="canvasPartie" 
+            id="canvas-partie">
+        </CanvasPartie>
+
+        <Pane styleClass="petit-espace-horizontal"/>
+
+    </HBox>
+
+    <Pane styleClass="petit-espace-vertical"/>
+
+    <Button 
+        fx:id="boutonQuitterPartie" 
+        text="%quitterPartie"
+        styleClass="gros-bouton"
+        id="bouton-quitter-partie">
+    </Button>
+
+    <Pane styleClass="petit-espace-vertical"/>
+
+</VBox>

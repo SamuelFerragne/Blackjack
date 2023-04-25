@@ -1,8 +1,8 @@
-rootProject.name = '4f5_prenom_nom'
+rootProject.name = '4f5_blackjack'
 
 include 'testfx'
 include 'pong'
-include 'mon_projet'
+include 'blackjack'
 
 buildscript {
     repositories {

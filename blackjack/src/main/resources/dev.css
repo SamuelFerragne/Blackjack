@@ -1,0 +1,49 @@
+.conteneur {
+    -fx-alignment: center;
+    -fx-background-color:gray;
+    -fx-border-width:10;
+}
+
+#vue-racine {
+    -fx-border-color:darkred;
+}
+
+#vue-file-attente {
+    -fx-border-color:darkblue;
+}
+
+.gros-texte {
+    -fx-font-weight: bold;
+    -fx-font-size: 3em;
+}
+
+.petit-espace-vertical {
+    -fx-min-height:100;
+    -fx-max-height:100;
+    -fx-background-color:pink;
+}
+
+#une-image{
+    -fx-scale-x:0.3;
+    -fx-scale-y:0.3;
+}
+
+
+/* http://fxexperience.com/2011/12/styling-fx-buttons-with-css/ */
+.gros-bouton {
+    -fx-background-color:
+    linear-gradient(#f0ff35, #a9ff00),
+    radial-gradient(center 50% -40%, radius 200%, #b8ee36 45%, #80c800 50%);
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    -fx-text-fill: #395306;
+}
+
+.gros-bouton:pressed {
+    -fx-font-size: 1em;
+}
+
+.gros-bouton:hover {
+    -fx-cursor: hand;
+}
