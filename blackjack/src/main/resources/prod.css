@@ -1,6 +1,6 @@
 .conteneur {
     -fx-alignment: center;
-    -fx-background-color:#f06035;
+    -fx-background-color:#777777;
 }
 
 #vue-racine {
@@ -33,13 +33,19 @@
 
 /* http://fxexperience.com/2011/12/styling-fx-buttons-with-css/ */
 .gros-bouton {
-    -fx-background-color:
-    linear-gradient(#f0ff35, #a9ff00),
-    radial-gradient(center 50% -40%, radius 200%, #b8ee36 45%, #80c800 50%);
-    -fx-background-radius: 6, 5;
-    -fx-background-insets: 0, 1;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
-    -fx-text-fill: #395306;
+    -fx-padding:10px;
+  -fx-background-color: #8b0000;
+  -fx-text-fill:goldenrod;
+  -fx-padding: 10;
+  -fx-margin: 20;
+  -fx-font-weight: bold;
+  -fx-font-size: 18;
+  -fx-border-radius: 10;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+  -fx-border-width: 2;
+  -fx-border-color: goldenrod;
+  -fx-background-insets: 0,1,2,3,0;
+  -fx-background-radius: 10,9,8,7,6;
 }
 
 .gros-bouton:pressed {

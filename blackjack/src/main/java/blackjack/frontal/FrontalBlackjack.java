@@ -6,9 +6,11 @@ import ca.ntro.app.frontend.FrontendFx;
 import ca.ntro.app.frontend.ViewRegistrarFx;
 import ca.ntro.app.frontend.events.EventRegistrar;
 import ca.ntro.app.tasks.frontend.FrontendTasks;
+import blackjack.frontal.donnees.DonneesVueBlackjack;
 import blackjack.frontal.evenements.EvtAfficherAccueil;
 import blackjack.frontal.evenements.EvtAfficherBlackjack;
 import blackjack.frontal.taches.AfficherBlackjack;
+import blackjack.frontal.taches.AfficherPartie;
 import blackjack.frontal.taches.Initialisation;
 import blackjack.frontal.taches.Navigation;
 import blackjack.frontal.vues.VueAccueil;
@@ -23,6 +25,7 @@ public class FrontalBlackjack implements FrontendFx {
     	Initialisation.creerTaches(tasks);
     	Navigation.creerTaches(tasks);
     	AfficherBlackjack.creerTaches(tasks);
+    	AfficherPartie.creerTaches(tasks);
 
     }
 
@@ -34,15 +37,19 @@ public class FrontalBlackjack implements FrontendFx {
 
     @Override
     public void registerViews(ViewRegistrarFx registrar) {
+    	
 		registrar.registerView(VueRacine.class, "/racine.xml");
 		registrar.registerView(VueBlackjack.class, "/blackjack.xml");
 		registrar.registerView(VueAccueil.class, "/accueil.xml");
+		
+		registrar.registerViewData(DonneesVueBlackjack.class);
 
 		registrar.registerDefaultResources("/chaines_fr.properties");
 		registrar.registerResources(NtroApp.locale("en"), "/chaines_en.properties");
 		
 		//registrar.registerStylesheet("/dev.css");
 		registrar.registerStylesheet("/prod.css");
+			
     }
 
     @Override

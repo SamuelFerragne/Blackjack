@@ -11,4 +11,12 @@ public class CanvasPartie extends ResizableWorld2dCanvasFx {
 		
 	}
 
+	public void afficherFps(String fps) {
+		drawOnCanvas(gc -> {
+
+			gc.fillText(fps, 0, 12);
+
+		});
+	}
+
 }
