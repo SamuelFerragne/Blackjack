@@ -16,4 +16,8 @@ public class DonneesVueBlackjack implements ViewData{
 		vueBlackjack.afficherImagesParSeconde("FPS " + fpsCourant);
 		vueBlackjack.afficherPong2d(mondeBlackjack2d);
 	}
+	
+	 public void reagirTempsQuiPasse(double secondesEcoulees) {
+	        mondeBlackjack2d.onTimePasses(secondesEcoulees);
+	 }
 }

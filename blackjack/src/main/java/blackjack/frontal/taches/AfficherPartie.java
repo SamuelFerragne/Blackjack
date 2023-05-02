@@ -38,7 +38,7 @@ public class AfficherPartie {
 				DonneesVueBlackjack donneesVueBlackjack = inputs.get(created(DonneesVueBlackjack.class));
 				VueBlackjack vueBlackjack = inputs.get(created(VueBlackjack.class));
 								
-				
+				donneesVueBlackjack.reagirTempsQuiPasse(tick.elapsedTime());
 				donneesVueBlackjack.afficherSur(vueBlackjack);
 			});
 		
