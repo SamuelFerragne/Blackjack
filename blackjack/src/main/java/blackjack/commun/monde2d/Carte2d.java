@@ -4,12 +4,12 @@ import java.awt.Rectangle;
 
 import ca.ntro.app.fx.controls.ResizableWorld2dCanvasFx;
 import ca.ntro.app.fx.controls.World2dMouseEventFx;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
 import javafx.animation.*;
-import javafx.animation.Timeline;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
+import javafx.scene.shape.LineTo;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
 import javafx.util.Duration;
 
 
@@ -21,9 +21,33 @@ public class Carte2d extends ObjetBlackjack2d {
 	private int numero;
 	private String sorte;
 	
-	private boolean afficher = true;
+	private boolean afficher = false;
 	
-	private double velocity = 5; 
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public boolean isAfficher() {
+		return afficher;
+	}
+
+	public void setAfficher(boolean afficher) {
+		this.afficher = afficher;
+	}
+
+	public double getVelocity() {
+		return velocity;
+	}
+
+	public void setVelocity(double velocity) {
+		this.velocity = velocity;
+	}
+
+	private double velocity = 200; 
 	
     private static final double DUREE_ANIMATION = 2;
     private double secondesRestantesRotation = 2;
@@ -56,7 +80,6 @@ public class Carte2d extends ObjetBlackjack2d {
 	public void drawOn(ResizableWorld2dCanvasFx canvas) {
 	        canvas.drawOnWorld(gc -> {
 	        	
-	        	
 	        	if (afficher) {
 	        		gc.drawImage(image, 
 		            		getTopLeftX(),
@@ -70,11 +93,10 @@ public class Carte2d extends ObjetBlackjack2d {
 	                        getWidth(),
 	                        getHeight());
 	        	}
-	        	if(secondesRestantesRotation > 0) {
-	        		
-	        	}
+	      
+	        	gc.fillText("X :" +Double.toString(this.getTopLeftX()), getTopLeftX(), getTopLeftY());
+	        	gc.fillText("Y :" +Double.toString(this.getTopLeftY()), getTopLeftX() + 50, getTopLeftX());
 	        	
-	            
 	        });
 	    }
 
@@ -87,7 +109,7 @@ public class Carte2d extends ObjetBlackjack2d {
 
 	@Override
 	protected boolean onMouseEvent(World2dMouseEventFx mouseEvent) {
-		// TODO Auto-generated method stub
+		afficher = true;
 		return false;
 	}
 	
@@ -103,5 +125,28 @@ public class Carte2d extends ObjetBlackjack2d {
 	
 	public void animationRotation() {
 		secondesRestantesRotation = DUREE_ANIMATION;
+	}
+	
+	public void moveTo(double x, double y) {
+		double distanceX = (x - getTopLeftX());
+		double distanceY = (y - getTopLeftY());
+	
+		double velocityX = distanceX / distanceY * velocity;
+		double velocityY = distanceY / distanceX * velocity;
+		
+		
+		this.setSpeedX(velocityX);
+		this.setSpeedY(velocityY);
+		
+		if(distanceX < 1) {
+			this.setTopLeftX(x);
+			this.setSpeedX(0);
+		}
+		if(distanceY < 1) {
+			this.setTopLeftY(y);
+			this.setSpeedY(0);
+		}
+		
+		
 	}
 }

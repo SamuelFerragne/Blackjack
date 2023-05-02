@@ -7,6 +7,7 @@ import ca.ntro.app.fx.world2d.World2dFx;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+
 public class MondeBlackjack2d extends World2dFx {
 
 	public static final double LARGEUR_MONDE = 640;
@@ -19,9 +20,11 @@ public class MondeBlackjack2d extends World2dFx {
         setWidth(LARGEUR_MONDE);
         setHeight(HAUTEUR_MONDE);
 
-        carte = new Carte2d(11, "Coeur", 50, 75);
+        carte = new Carte2d(11, "Coeur", 100, 100);
 
         addObject2d(carte);
+        
+        
     }
 
     @Override
@@ -45,9 +48,10 @@ public class MondeBlackjack2d extends World2dFx {
 
 	@Override
 	protected void onMouseEventNotConsumed(World2dMouseEventFx mouseEvent) {
-		// TODO Auto-generated method stub
 		
 	}
+	
+	
 	
 
 }
