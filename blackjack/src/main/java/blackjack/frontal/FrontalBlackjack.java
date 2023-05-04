@@ -9,6 +9,7 @@ import ca.ntro.app.tasks.frontend.FrontendTasks;
 import blackjack.frontal.donnees.DonneesVueBlackjack;
 import blackjack.frontal.evenements.EvtAfficherAccueil;
 import blackjack.frontal.evenements.EvtAfficherBlackjack;
+import blackjack.frontal.evenements.EvtClicSouris;
 import blackjack.frontal.taches.AfficherBlackjack;
 import blackjack.frontal.taches.AfficherPartie;
 import blackjack.frontal.taches.Initialisation;
@@ -33,6 +34,7 @@ public class FrontalBlackjack implements FrontendFx {
     public void registerEvents(EventRegistrar registrar) {
     	registrar.registerEvent(EvtAfficherAccueil.class);
     	registrar.registerEvent(EvtAfficherBlackjack.class);
+    	registrar.registerEvent(EvtClicSouris.class);
     }
 
     @Override

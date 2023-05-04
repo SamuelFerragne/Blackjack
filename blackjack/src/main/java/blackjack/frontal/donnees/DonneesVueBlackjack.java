@@ -3,6 +3,7 @@ package blackjack.frontal.donnees;
 import blackjack.commun.monde2d.MondeBlackjack2d;
 import blackjack.frontal.vues.VueBlackjack;
 import ca.ntro.app.frontend.ViewData;
+import ca.ntro.app.fx.controls.World2dMouseEventFx;
 
 public class DonneesVueBlackjack implements ViewData{
 
@@ -15,5 +16,11 @@ public class DonneesVueBlackjack implements ViewData{
 		vueBlackjack.viderCanvas();
 		vueBlackjack.afficherImagesParSeconde("FPS " + fpsCourant);
 		vueBlackjack.afficherPong2d(mondeBlackjack2d);
+	}
+
+
+	public void reagirClicSouris(World2dMouseEventFx mouseEvent) {
+		// TODO Auto-generated method stub
+		
 	}
 }
