@@ -5,6 +5,7 @@ import ca.ntro.app.fx.controls.ResizableWorld2dCanvasFx;
 import ca.ntro.app.fx.controls.World2dMouseEventFx;
 import ca.ntro.app.fx.world2d.World2dFx;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
 public class MondeBlackjack2d extends World2dFx {
@@ -45,6 +46,11 @@ public class MondeBlackjack2d extends World2dFx {
 
 	@Override
 	protected void onMouseEventNotConsumed(World2dMouseEventFx mouseEvent) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void dispatchMouseEvent(World2dMouseEventFx mouseEvent, double x, double y) {
 		// TODO Auto-generated method stub
 		
 	}
