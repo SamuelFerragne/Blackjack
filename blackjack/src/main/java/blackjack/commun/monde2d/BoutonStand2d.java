@@ -13,7 +13,7 @@ public class BoutonStand2d extends ObjetBlackjack2d {
     public void initialize() {
         setWidth(10);
         setHeight(10);
-        setTopLeftX(11);
+        setTopLeftX(50);
         setTopLeftY(10);
     }
 

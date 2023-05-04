@@ -13,7 +13,7 @@ public class BoutonDoubleDown2d extends ObjetBlackjack2d {
     public void initialize() {
         setWidth(10);
         setHeight(10);
-        setTopLeftX(22);
+        setTopLeftX(100);
         setTopLeftY(10);
     }
 
@@ -21,13 +21,15 @@ public class BoutonDoubleDown2d extends ObjetBlackjack2d {
     public void drawOn(ResizableWorld2dCanvasFx canvas) {
 
         canvas.drawOnWorld(gc -> {
+        	
             gc.fillRect(getTopLeftX(), getTopLeftY(), getWidth(), getHeight());
         });
     }
 
     @Override
     protected boolean onMouseEvent(World2dMouseEventFx mouseEvent) {
-        return false;
+    	
+        return true;
     }
 
     @Override

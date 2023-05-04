@@ -1,5 +1,7 @@
 package blackjack.commun.valeurs;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import blackjack.commun.monde2d.Carte2d;
@@ -14,7 +16,11 @@ public class Main implements ModelValue{
 	private boolean isPlaying;
 	
 	public Main() {
-		
+		Carte2d[] tabCartes = {};
+		List<Carte2d> cartes = new ArrayList<>(Arrays.asList(tabCartes));
+		setCartes(cartes);
+		setWager(0);
+		setPlaying(true);
 	}
 	
 	public Main(List<Carte2d> cartes, int wager, boolean isPlaying) {
@@ -85,6 +91,7 @@ public class Main implements ModelValue{
 		}
 		
 		this.cartes.add(new Carte2d(valeur,sorte));
+		calculerScore(this.cartes);
 	}
 
 	public void stand() {
@@ -94,6 +101,7 @@ public class Main implements ModelValue{
 	public void doubleDown() {
 		this.wager*=2;
 		this.hit();
+		calculerScore(this.cartes);
 		this.stand();
 	}
 }

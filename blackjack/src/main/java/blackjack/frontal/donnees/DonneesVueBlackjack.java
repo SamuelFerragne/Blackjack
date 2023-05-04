@@ -20,8 +20,11 @@ public class DonneesVueBlackjack implements ViewData{
 	}
 
 
-	public void reagirClicSouris(World2dMouseEventFx mouseEvent, double x, double y) {
-		mondeBlackjack2d.dispatchMouseEvent(mouseEvent, x,y);
+	public void reagirClicSouris(World2dMouseEventFx mouseEvent) {
 		
+	}
+	
+	public void reagirClicSouris(MouseEvent evtFx, double x, double y) {
+		mondeBlackjack2d.dispatchMouseEvent(evtFx, x,y);
 	}
 }

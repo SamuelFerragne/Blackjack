@@ -1,8 +1,10 @@
 package blackjack.commun.monde2d;
 
 
+import blackjack.commun.valeurs.Main;
 import ca.ntro.app.fx.controls.ResizableWorld2dCanvasFx;
 import ca.ntro.app.fx.controls.World2dMouseEventFx;
+import ca.ntro.app.fx.world2d.Object2dFx;
 import ca.ntro.app.fx.world2d.World2dFx;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
@@ -17,12 +19,17 @@ public class MondeBlackjack2d extends World2dFx {
     private BoutonDoubleDown2d boutonDD;
     private BoutonHit2d boutonHit;
     private BoutonStand2d boutonStand;
+    public Main mainJoueur;
+    private Main mainDealer;
+    ResizableWorld2dCanvasFx canvas;
 
     @Override
     protected void initialize() {
         setWidth(LARGEUR_MONDE);
         setHeight(HAUTEUR_MONDE);
 
+        mainJoueur = new Main();
+        mainJoueur.hit();
         carte = new Carte2d();
         boutonDD = new BoutonDoubleDown2d();
         boutonHit = new BoutonHit2d();
@@ -41,6 +48,7 @@ public class MondeBlackjack2d extends World2dFx {
         });
 
         super.drawOn(canvas);
+        this.canvas = canvas;
     }
 
     private void dessinerTerrain(GraphicsContext gc) {
@@ -59,10 +67,6 @@ public class MondeBlackjack2d extends World2dFx {
 		
 	}
 
-	public void dispatchMouseEvent(World2dMouseEventFx mouseEvent, double x, double y) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 
 }

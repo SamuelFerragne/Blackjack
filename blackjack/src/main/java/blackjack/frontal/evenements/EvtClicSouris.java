@@ -21,6 +21,6 @@ public class EvtClicSouris extends EventNtro {
     }
 
     public void appliquerA(DonneesVueBlackjack donneesVueBlackjack) {
-        donneesVueBlackjack.reagirClicSouris(mouseEvent, mouseEvent.canvasX(), mouseEvent.canvasY());
+        donneesVueBlackjack.reagirClicSouris(mouseEvent);
     }
 }

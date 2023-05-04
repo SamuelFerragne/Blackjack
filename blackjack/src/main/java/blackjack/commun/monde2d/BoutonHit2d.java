@@ -5,6 +5,8 @@ import ca.ntro.app.fx.controls.World2dMouseEventFx;
 
 public class BoutonHit2d extends ObjetBlackjack2d {
 
+	private boolean selectione;
+	
 	public BoutonHit2d() {
         super();
     }
@@ -21,13 +23,19 @@ public class BoutonHit2d extends ObjetBlackjack2d {
     public void drawOn(ResizableWorld2dCanvasFx canvas) {
 
         canvas.drawOnWorld(gc -> {
+        	if(selectione) {
+        		gc.fillText(this.getWorld2d().mainJoueur.getCartes().toString(), 100, 100);
+        	}
+        	
             gc.fillRect(getTopLeftX(), getTopLeftY(), getWidth(), getHeight());
         });
     }
 
     @Override
     protected boolean onMouseEvent(World2dMouseEventFx mouseEvent) {
-        return false;
+    	this.getWorld2d().mainJoueur.hit();
+    	this.selectione = !this.selectione;
+        return true;
     }
 
     @Override
