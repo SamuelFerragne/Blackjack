@@ -21,6 +21,10 @@ public class Carte2d extends ObjetBlackjack2d {
 		
 	}
 	
+	public int getNumero() {
+		return this.numero;
+	}
+	
 	@Override
 	 public void initialize() {
        setWidth(10);
