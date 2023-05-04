@@ -3,9 +3,9 @@ package blackjack.commun.monde2d;
 import ca.ntro.app.fx.controls.ResizableWorld2dCanvasFx;
 import ca.ntro.app.fx.controls.World2dMouseEventFx;
 
-public class BoutonHit2d extends ObjetBlackjack2d {
+public class BoutonDoubleDown2d extends ObjetBlackjack2d {
 
-	public BoutonHit2d() {
+	public BoutonDoubleDown2d() {
         super();
     }
 
@@ -13,7 +13,7 @@ public class BoutonHit2d extends ObjetBlackjack2d {
     public void initialize() {
         setWidth(10);
         setHeight(10);
-        setTopLeftX(0);
+        setTopLeftX(22);
         setTopLeftY(10);
     }
 
@@ -32,7 +32,7 @@ public class BoutonHit2d extends ObjetBlackjack2d {
 
     @Override
     public String id() {
-        return "boutonHit";
+        return "boutonDoubleDown";
     }
 
 }

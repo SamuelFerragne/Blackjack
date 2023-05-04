@@ -14,6 +14,9 @@ public class MondeBlackjack2d extends World2dFx {
     public static final double HAUTEUR_MONDE = 360;
 
     private Carte2d carte ;
+    private BoutonDoubleDown2d boutonDD;
+    private BoutonHit2d boutonHit;
+    private BoutonStand2d boutonStand;
 
     @Override
     protected void initialize() {
@@ -21,8 +24,14 @@ public class MondeBlackjack2d extends World2dFx {
         setHeight(HAUTEUR_MONDE);
 
         carte = new Carte2d();
+        boutonDD = new BoutonDoubleDown2d();
+        boutonHit = new BoutonHit2d();
+        boutonStand = new BoutonStand2d();
 
         addObject2d(carte);
+        addObject2d(boutonDD);
+        addObject2d(boutonHit);
+        addObject2d(boutonStand);
     }
 
     @Override
