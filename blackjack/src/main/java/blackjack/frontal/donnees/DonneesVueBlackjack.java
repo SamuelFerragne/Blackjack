@@ -4,6 +4,7 @@ import blackjack.commun.monde2d.MondeBlackjack2d;
 import blackjack.frontal.vues.VueBlackjack;
 import ca.ntro.app.frontend.ViewData;
 import ca.ntro.app.fx.controls.World2dMouseEventFx;
+import javafx.scene.input.MouseEvent;
 
 public class DonneesVueBlackjack implements ViewData{
 
@@ -19,8 +20,7 @@ public class DonneesVueBlackjack implements ViewData{
 	}
 
 
-	public void reagirClicSouris(World2dMouseEventFx mouseEvent) {
-		// TODO Auto-generated method stub
-		
+	public void reagirClicSouris(MouseEvent evtFx, double x, double y) {
+		mondeBlackjack2d.dispatchMouseEvent(evtFx, x,y);
 	}
 }
