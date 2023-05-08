@@ -1,6 +1,7 @@
 package blackjack.commun.monde2d.boutons;
 
 import blackjack.commun.monde2d.ObjetBlackjack2d;
+import blackjack.commun.valeurs.Main;
 import ca.ntro.app.fx.controls.World2dMouseEventFx;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -31,7 +32,18 @@ public class BoutonSplit2d extends ObjetBlackjack2d {
     @Override
     protected boolean onMouseEvent(World2dMouseEventFx mouseEvent) {
     	if(this.getWorld2d().mainsJoueur.get(this.getWorld2d().mainJouant).isPlaying()) {
-        	this.getWorld2d().mainsJoueur.get(this.getWorld2d().mainJouant).hit();
+        	this.getWorld2d().mainsJoueur.get(this.getWorld2d().mainJouant).split();
+    	}
+    	if(this.getWorld2d().mainsJoueur.size() > 0) {
+    		if(this.getWorld2d().mainJouant == this.getWorld2d().mainsJoueur.size()){
+    			this.getWorld2d().mainJouant = 0;
+    		}else {
+    			for(Main main : this.getWorld2d().mainsJoueur) {
+    				if(main.isPlaying()) {
+    					this.getWorld2d().mainJouant = this.getWorld2d().mainsJoueur.indexOf(main);
+    				}
+    			}
+    		}
     	}
         return true;
     }
