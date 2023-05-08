@@ -26,7 +26,7 @@ public class BoutonDoubleDown2d extends ObjetBlackjack2d {
 
     @Override
     protected boolean onMouseEvent(World2dMouseEventFx mouseEvent) {
-    	
+    	this.getWorld2d().mainJoueur.doubleDown();
         return true;
     }
 

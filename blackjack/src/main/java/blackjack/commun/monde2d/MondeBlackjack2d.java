@@ -1,6 +1,10 @@
 package blackjack.commun.monde2d;
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import blackjack.commun.valeurs.Main;
 import ca.ntro.app.fx.controls.ResizableWorld2dCanvasFx;
 import ca.ntro.app.fx.controls.World2dMouseEventFx;
@@ -28,14 +32,15 @@ public class MondeBlackjack2d extends World2dFx {
         setWidth(LARGEUR_MONDE);
         setHeight(HAUTEUR_MONDE);
 
-        mainJoueur = new Main();
+		Carte2d[] tabCartes = {};
+		List<Carte2d> cartes = new ArrayList<>(Arrays.asList(tabCartes));
+        mainJoueur = new Main(cartes,100,true);
         mainJoueur.hit();
         carte = new Carte2d();
         boutonDD = new BoutonDoubleDown2d();
         boutonHit = new BoutonHit2d();
         boutonStand = new BoutonStand2d();
 
-        addObject2d(carte);
         addObject2d(boutonDD);
         addObject2d(boutonHit);
         addObject2d(boutonStand);

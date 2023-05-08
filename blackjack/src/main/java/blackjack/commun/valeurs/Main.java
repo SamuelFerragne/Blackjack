@@ -69,10 +69,10 @@ public class Main implements ModelValue{
 	}
 	
 	public void hit() {
-		int valeur = Ntro.random().nextInt(12)+1;
+		int valeur = Ntro.random().nextInt(13)+1;
 		String sorte;
 		
-		switch(Ntro.random().nextInt(3)) {
+		switch(Ntro.random().nextInt(4)) {
 			case 0:
 				sorte = "Coeur";
 				break;
@@ -112,7 +112,7 @@ public class Main implements ModelValue{
 			str.append(carte.getNumero()+":"+carte.getSorte()+ " ");
 		}
 		
-		return str.toString();
+		return str.toString() + " " + this.wager;
 		
 	}
 }
