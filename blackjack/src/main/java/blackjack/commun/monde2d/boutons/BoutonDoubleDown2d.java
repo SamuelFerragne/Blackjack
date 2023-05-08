@@ -32,7 +32,7 @@ public class BoutonDoubleDown2d extends ObjetBlackjack2d {
         	this.getWorld2d().mainsJoueur.get(this.getWorld2d().mainJouant).doubleDown();
     	}
     	if(this.getWorld2d().mainsJoueur.size() > 0) {
-    		if(this.getWorld2d().mainJouant == this.getWorld2d().mainsJoueur.size()){
+    		if(this.getWorld2d().mainJouant == this.getWorld2d().mainsJoueur.size()-1){
     			this.getWorld2d().mainJouant = 0;
     		}else {
     			for(Main main : this.getWorld2d().mainsJoueur) {

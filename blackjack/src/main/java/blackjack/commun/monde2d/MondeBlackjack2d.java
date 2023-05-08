@@ -7,6 +7,7 @@ import java.util.List;
 
 import blackjack.commun.monde2d.boutons.BoutonDoubleDown2d;
 import blackjack.commun.monde2d.boutons.BoutonHit2d;
+import blackjack.commun.monde2d.boutons.BoutonSplit2d;
 import blackjack.commun.monde2d.boutons.BoutonStand2d;
 import blackjack.commun.monde2d.zonebet.BoutonAjoutBet;
 import blackjack.commun.monde2d.zonebet.BoutonBet;
@@ -29,13 +30,14 @@ public class MondeBlackjack2d extends World2dFx {
     private BoutonDoubleDown2d boutonDD;
     private BoutonHit2d boutonHit;
     private BoutonStand2d boutonStand;
-    public List<Main> mainsJoueur = new ArrayList<Main>();
+    public List<Main> mainsJoueur;
     public int mainJouant;
     private Main mainDealer;
     public ZoneBet2d zoneBet2d;
     private BoutonAjoutBet boutonAjoutBet;
     private BoutonReduireBet boutonReduireBet;
     public BoutonBet boutonBet;
+    public BoutonSplit2d boutonSplit2d;
     ResizableWorld2dCanvasFx canvas;
 
     @Override
@@ -44,7 +46,14 @@ public class MondeBlackjack2d extends World2dFx {
         setHeight(HAUTEUR_MONDE);
 
         mainJouant = 0;
-        mainsJoueur.add(new Main());
+		Carte2d[] tabCartes = {new Carte2d(13,"Trefle"),new Carte2d(13,"Coeur")};
+		List<Carte2d> cartes = new ArrayList<>(Arrays.asList(tabCartes));
+	
+        mainsJoueur = new ArrayList<Main>();
+        
+        mainsJoueur.add(new Main(cartes,100,true));
+        
+        //mainsJoueur.add(new Main());
         boutonDD = new BoutonDoubleDown2d();
         boutonHit = new BoutonHit2d();
         boutonStand = new BoutonStand2d();
@@ -52,6 +61,7 @@ public class MondeBlackjack2d extends World2dFx {
         boutonAjoutBet = new BoutonAjoutBet();
         zoneBet2d =  new ZoneBet2d(0);
         boutonBet = new BoutonBet();
+        boutonSplit2d = new BoutonSplit2d();
 
         addObject2d(boutonDD);
         addObject2d(boutonHit);
@@ -60,6 +70,7 @@ public class MondeBlackjack2d extends World2dFx {
         addObject2d(boutonReduireBet);
         addObject2d(boutonAjoutBet);
         addObject2d(boutonBet);
+        addObject2d(boutonSplit2d);
     }
 
     @Override

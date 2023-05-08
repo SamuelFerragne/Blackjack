@@ -26,6 +26,7 @@ public class BoutonHit2d extends ObjetBlackjack2d {
     public void drawOnWorld(GraphicsContext gc) {
 
         	gc.fillText(this.getWorld2d().mainsJoueur.get(this.getWorld2d().mainJouant).toString(), 100, 100);
+        	gc.fillText(""+this.getWorld2d().mainJouant, 75, 75);
         	
             gc.fillRect(getTopLeftX(), getTopLeftY(), getWidth(), getHeight());
     }
@@ -36,7 +37,7 @@ public class BoutonHit2d extends ObjetBlackjack2d {
         	this.getWorld2d().mainsJoueur.get(this.getWorld2d().mainJouant).hit();
     	}
     	if(this.getWorld2d().mainsJoueur.size() > 0) {
-    		if(this.getWorld2d().mainJouant == this.getWorld2d().mainsJoueur.size()){
+    		if(this.getWorld2d().mainJouant == this.getWorld2d().mainsJoueur.size()-1){
     			this.getWorld2d().mainJouant = 0;
     		}else {
     			for(Main main : this.getWorld2d().mainsJoueur) {

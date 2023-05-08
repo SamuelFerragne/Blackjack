@@ -17,25 +17,31 @@ public class BoutonSplit2d extends ObjetBlackjack2d {
     public void initialize() {
         setWidth(10);
         setHeight(10);
-        setTopLeftX(0);
+        setTopLeftX(150);
         setTopLeftY(10);
     }
 
     @Override
     public void drawOnWorld(GraphicsContext gc) {
 
-        	gc.fillText(this.getWorld2d().mainsJoueur.get(this.getWorld2d().mainJouant).toString(), 100, 100);
+    	int place = 300;
+    	for(Main main:this.getWorld2d().mainsJoueur) {
+    		gc.fillText(main.toString(), place, place);
+    		place+=10;
+    	}
+    	
+        gc.fillText(this.getWorld2d().mainsJoueur.get(this.getWorld2d().mainJouant).toString(), 100, 100);
         	
-            gc.fillRect(getTopLeftX(), getTopLeftY(), getWidth(), getHeight());
+        gc.fillRect(getTopLeftX(), getTopLeftY(), getWidth(), getHeight());
     }
 
     @Override
     protected boolean onMouseEvent(World2dMouseEventFx mouseEvent) {
     	if(this.getWorld2d().mainsJoueur.get(this.getWorld2d().mainJouant).isPlaying()) {
-        	this.getWorld2d().mainsJoueur.get(this.getWorld2d().mainJouant).split();
+        	this.getWorld2d().mainsJoueur.get(this.getWorld2d().mainJouant).split(this.getWorld2d());
     	}
     	if(this.getWorld2d().mainsJoueur.size() > 0) {
-    		if(this.getWorld2d().mainJouant == this.getWorld2d().mainsJoueur.size()){
+    		if(this.getWorld2d().mainJouant == this.getWorld2d().mainsJoueur.size()-1){
     			this.getWorld2d().mainJouant = 0;
     		}else {
     			for(Main main : this.getWorld2d().mainsJoueur) {
@@ -50,7 +56,7 @@ public class BoutonSplit2d extends ObjetBlackjack2d {
 
     @Override
     public String id() {
-        return "boutonHit";
+        return "boutonSplit";
     }
 
 }

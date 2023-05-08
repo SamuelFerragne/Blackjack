@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import blackjack.commun.monde2d.Carte2d;
+import blackjack.commun.monde2d.MondeBlackjack2d;
 import ca.ntro.app.models.ModelValue;
 import ca.ntro.core.initialization.Ntro;
 
@@ -43,7 +44,9 @@ public class Main implements ModelValue{
 
 	public void setCartes(List<Carte2d> cartes) {
 		this.cartes = cartes;
-		calculerScore(cartes);
+		if(cartes.size() > 0) {
+			calculerScore(cartes);
+		}
 	}
 
 	public int getScore() {
@@ -123,10 +126,13 @@ public class Main implements ModelValue{
 		setWager(0);
 	}
 	
-	public void split() {
+	public void split(MondeBlackjack2d mondeBlackjack2d) {
 		if(cartes.size() == 2) {
-			if(cartes.get(0) == cartes.get(1)) {
-				
+			if(cartes.get(0).getNumero() == cartes.get(1).getNumero()) {
+				Carte2d[] tabCartes = {cartes.get(1)};
+				List<Carte2d> cartes = new ArrayList<>(Arrays.asList(tabCartes));
+				mondeBlackjack2d.mainsJoueur.add(new Main(cartes,wager,true));
+				this.cartes.remove(1);
 			}
 		}
 	}
