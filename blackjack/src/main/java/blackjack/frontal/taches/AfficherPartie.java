@@ -22,10 +22,26 @@ public class AfficherPartie {
         .andContains(subTasks -> {
 
            prochaineImagePartie(subTasks);
+           reagirClicSouris(subTasks);
 
         });
     }
     
+	private static void reagirClicSouris(FrontendTasks tasks) {
+
+		tasks.task("reagirClicSouris")
+
+		        .waitsFor(event(EvtClicSouris.class))
+
+		        .thenExecutes(inputs -> {
+
+		        	DonneesVueBlackjack donneesVueBlackjack = inputs.get(created(DonneesVueBlackjack.class));
+		        	EvtClicSouris    evtClicSouris    = inputs.get(event(EvtClicSouris.class));
+
+		        	evtClicSouris.appliquerA(donneesVueBlackjack);
+
+		        });
+	}
 
 	private static void prochaineImagePartie(FrontendTasks subTasks) {
 

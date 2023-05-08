@@ -2,6 +2,7 @@ package blackjack.commun.monde2d;
 
 import ca.ntro.app.fx.controls.ResizableWorld2dCanvasFx;
 import ca.ntro.app.fx.controls.World2dMouseEventFx;
+import javafx.scene.canvas.GraphicsContext;
 
 public class BoutonStand2d extends ObjetBlackjack2d {
 
@@ -18,11 +19,9 @@ public class BoutonStand2d extends ObjetBlackjack2d {
     }
 
     @Override
-    public void drawOn(ResizableWorld2dCanvasFx canvas) {
+    public void drawOnWorld(GraphicsContext gc) {
 
-        canvas.drawOnWorld(gc -> {
             gc.fillRect(getTopLeftX(), getTopLeftY(), getWidth(), getHeight());
-        });
     }
 
     @Override

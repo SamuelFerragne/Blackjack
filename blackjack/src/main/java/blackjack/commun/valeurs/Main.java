@@ -104,4 +104,15 @@ public class Main implements ModelValue{
 		calculerScore(this.cartes);
 		this.stand();
 	}
+
+	public String toString() {
+		StringBuilder str = new StringBuilder();
+		
+		for (Carte2d carte : cartes){
+			str.append(carte.getNumero()+":"+carte.getSorte()+ " ");
+		}
+		
+		return str.toString();
+		
+	}
 }

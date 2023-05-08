@@ -2,6 +2,7 @@ package blackjack.commun.monde2d;
 
 import ca.ntro.app.fx.controls.ResizableWorld2dCanvasFx;
 import ca.ntro.app.fx.controls.World2dMouseEventFx;
+import javafx.scene.canvas.GraphicsContext;
 
 public class BoutonHit2d extends ObjetBlackjack2d {
 
@@ -20,21 +21,16 @@ public class BoutonHit2d extends ObjetBlackjack2d {
     }
 
     @Override
-    public void drawOn(ResizableWorld2dCanvasFx canvas) {
+    public void drawOnWorld(GraphicsContext gc) {
 
-        canvas.drawOnWorld(gc -> {
-        	if(selectione) {
-        		gc.fillText(this.getWorld2d().mainJoueur.getCartes().toString(), 100, 100);
-        	}
+        	gc.fillText(this.getWorld2d().mainJoueur.toString(), 100, 100);
         	
             gc.fillRect(getTopLeftX(), getTopLeftY(), getWidth(), getHeight());
-        });
     }
 
     @Override
     protected boolean onMouseEvent(World2dMouseEventFx mouseEvent) {
     	this.getWorld2d().mainJoueur.hit();
-    	this.selectione = !this.selectione;
         return true;
     }
 

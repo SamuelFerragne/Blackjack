@@ -34,6 +34,12 @@
         styleClass="gros-bouton"
         id="bouton-quitter-partie">
     </Button>
+       <Button 
+        fx:id="boutonHit" 
+        text="Hit"
+        styleClass="gros-bouton"
+        id="bouton-hit">
+    </Button>
 
     <Pane styleClass="petit-espace-vertical"/>
 

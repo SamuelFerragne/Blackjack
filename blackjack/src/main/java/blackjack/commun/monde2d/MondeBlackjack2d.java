@@ -68,5 +68,4 @@ public class MondeBlackjack2d extends World2dFx {
 	}
 
 	
-
 }

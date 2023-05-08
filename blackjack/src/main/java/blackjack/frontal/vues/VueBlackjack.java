@@ -16,14 +16,17 @@ public class VueBlackjack extends ViewFx {
 	
 	@FXML
 	private Button boutonQuitterPartie;
-	 @FXML
-	 private CanvasPartie canvasPartie;
+	@FXML
+	private CanvasPartie canvasPartie;
+	@FXML
+	private Button boutonHit;
 
 	@Override
 	public void initialiser() {
 
 		Ntro.assertNotNull(boutonQuitterPartie);
 		Ntro.assertNotNull(canvasPartie);
+		Ntro.assertNotNull(boutonHit);
 		
 		installerEvtAfficherAccueil();
 		installerEvtClicSouris();
@@ -38,6 +41,7 @@ public class VueBlackjack extends ViewFx {
 			
 			evtNtro.trigger();
 		});
+		
 	}
 	
     @SuppressWarnings("unchecked")

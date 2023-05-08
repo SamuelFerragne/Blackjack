@@ -3,6 +3,7 @@ package blackjack.commun.monde2d;
 import ca.ntro.app.fx.controls.ResizableWorld2dCanvasFx;
 import ca.ntro.app.fx.controls.World2dMouseEventFx;
 import ca.ntro.core.initialization.Ntro;
+import javafx.scene.canvas.GraphicsContext;
 
 
 public class Carte2d extends ObjetBlackjack2d {
@@ -25,6 +26,10 @@ public class Carte2d extends ObjetBlackjack2d {
 		return this.numero;
 	}
 	
+	public String getSorte() {
+		return this.sorte;
+	}
+	
 	@Override
 	 public void initialize() {
        setWidth(10);
@@ -34,10 +39,10 @@ public class Carte2d extends ObjetBlackjack2d {
    }
 
 	@Override
-	public void drawOn(ResizableWorld2dCanvasFx canvas) {
-	        canvas.drawOnWorld(gc -> {
+	public void drawOnWorld(GraphicsContext gc) {
+	        
 	            gc.strokeText(id(), getTopLeftX(), getTopLeftY());
-	        });
+	        
 	    }
 
 	@Override
@@ -52,6 +57,8 @@ public class Carte2d extends ObjetBlackjack2d {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	
 
 
 }
