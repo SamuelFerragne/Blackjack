@@ -1,15 +1,14 @@
 package blackjack.commun.monde2d.boutons;
 
 import blackjack.commun.monde2d.ObjetBlackjack2d;
-import ca.ntro.app.fx.controls.ResizableWorld2dCanvasFx;
 import ca.ntro.app.fx.controls.World2dMouseEventFx;
 import javafx.scene.canvas.GraphicsContext;
 
-public class BoutonHit2d extends ObjetBlackjack2d {
+public class BoutonSplit2d extends ObjetBlackjack2d {
 
 	private boolean selectione;
 	
-	public BoutonHit2d() {
+	public BoutonSplit2d() {
         super();
     }
 

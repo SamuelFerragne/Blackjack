@@ -19,8 +19,7 @@ public class Main implements ModelValue{
 		Carte2d[] tabCartes = {};
 		List<Carte2d> cartes = new ArrayList<>(Arrays.asList(tabCartes));
 		setCartes(cartes);
-		setWager(0);
-		setPlaying(true);
+		setPlaying(false);
 	}
 	
 	public Main(List<Carte2d> cartes, int wager, boolean isPlaying) {
@@ -122,5 +121,13 @@ public class Main implements ModelValue{
 		List<Carte2d> cartes = new ArrayList<>(Arrays.asList(tabCartes));
 		setCartes(cartes);
 		setWager(0);
+	}
+	
+	public void split() {
+		if(cartes.size() == 2) {
+			if(cartes.get(0) == cartes.get(1)) {
+				
+			}
+		}
 	}
 }

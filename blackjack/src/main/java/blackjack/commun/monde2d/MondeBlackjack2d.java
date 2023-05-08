@@ -26,11 +26,11 @@ public class MondeBlackjack2d extends World2dFx {
 	public static final double LARGEUR_MONDE = 640;
     public static final double HAUTEUR_MONDE = 360;
 
-    private Carte2d carte ;
     private BoutonDoubleDown2d boutonDD;
     private BoutonHit2d boutonHit;
     private BoutonStand2d boutonStand;
-    public Main mainJoueur;
+    public List<Main> mainsJoueur = new ArrayList<Main>();
+    public int mainJouant;
     private Main mainDealer;
     public ZoneBet2d zoneBet2d;
     private BoutonAjoutBet boutonAjoutBet;
@@ -43,11 +43,8 @@ public class MondeBlackjack2d extends World2dFx {
         setWidth(LARGEUR_MONDE);
         setHeight(HAUTEUR_MONDE);
 
-		Carte2d[] tabCartes = {};
-		List<Carte2d> cartes = new ArrayList<>(Arrays.asList(tabCartes));
-        mainJoueur = new Main(cartes,100,true);
-        mainJoueur.hit();
-        carte = new Carte2d();
+        mainJouant = 0;
+        mainsJoueur.add(new Main());
         boutonDD = new BoutonDoubleDown2d();
         boutonHit = new BoutonHit2d();
         boutonStand = new BoutonStand2d();

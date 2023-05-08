@@ -25,10 +25,10 @@ public class BoutonBet extends ObjetBlackjack2d {
 
     @Override
     protected boolean onMouseEvent(World2dMouseEventFx mouseEvent) {
-    	if(!this.getWorld2d().mainJoueur.isPlaying()) {
-    		this.getWorld2d().mainJoueur.clear();
-        	this.getWorld2d().mainJoueur.setWager(this.getWorld2d().zoneBet2d.getBet());
-        	this.getWorld2d().mainJoueur.setPlaying(true);
+    	if(!this.getWorld2d().mainsJoueur.get(this.getWorld2d().mainJouant).isPlaying()) {
+    		this.getWorld2d().mainsJoueur.get(this.getWorld2d().mainJouant).clear();
+        	this.getWorld2d().mainsJoueur.get(this.getWorld2d().mainJouant).setWager(this.getWorld2d().zoneBet2d.getBet());
+        	this.getWorld2d().mainsJoueur.get(this.getWorld2d().mainJouant).setPlaying(true);
     	}
         return true;
     }

@@ -27,8 +27,8 @@ public class BoutonDoubleDown2d extends ObjetBlackjack2d {
 
     @Override
     protected boolean onMouseEvent(World2dMouseEventFx mouseEvent) {
-    	if(this.getWorld2d().mainJoueur.isPlaying()) {
-        	this.getWorld2d().mainJoueur.doubleDown();
+    	if(this.getWorld2d().mainsJoueur.get(this.getWorld2d().mainJouant).isPlaying()) {
+        	this.getWorld2d().mainsJoueur.get(this.getWorld2d().mainJouant).doubleDown();
     	}
         return true;
     }
