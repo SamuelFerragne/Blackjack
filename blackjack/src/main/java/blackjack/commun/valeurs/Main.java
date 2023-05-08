@@ -44,6 +44,7 @@ public class Main implements ModelValue{
 
 	public void setCartes(List<Carte2d> cartes) {
 		this.cartes = cartes;
+		calculerScore(cartes);
 	}
 
 	public int getScore() {
@@ -114,5 +115,12 @@ public class Main implements ModelValue{
 		
 		return str.toString() + " " + this.wager;
 		
+	}
+	
+	public void clear() {
+		Carte2d[] tabCartes = {};
+		List<Carte2d> cartes = new ArrayList<>(Arrays.asList(tabCartes));
+		setCartes(cartes);
+		setWager(0);
 	}
 }

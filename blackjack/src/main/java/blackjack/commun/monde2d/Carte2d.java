@@ -41,7 +41,7 @@ public class Carte2d extends ObjetBlackjack2d {
 	@Override
 	public void drawOnWorld(GraphicsContext gc) {
 	        
-	            gc.strokeText(id(), getTopLeftX(), getTopLeftY());
+	        gc.strokeText(id(), getTopLeftX(), getTopLeftY());
 	        
 	    }
 
