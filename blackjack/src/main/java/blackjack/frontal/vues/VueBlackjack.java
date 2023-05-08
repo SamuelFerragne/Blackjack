@@ -26,7 +26,6 @@ public class VueBlackjack extends ViewFx {
 
 		Ntro.assertNotNull(boutonQuitterPartie);
 		Ntro.assertNotNull(canvasPartie);
-		Ntro.assertNotNull(boutonHit);
 		
 		installerEvtAfficherAccueil();
 		installerEvtClicSouris();

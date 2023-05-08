@@ -26,7 +26,10 @@ public class BoutonStand2d extends ObjetBlackjack2d {
 
     @Override
     protected boolean onMouseEvent(World2dMouseEventFx mouseEvent) {
-        return false;
+    	if(this.getWorld2d().mainJoueur.isPlaying()) {
+    		this.getWorld2d().mainJoueur.stand();
+    	}
+        return true;
     }
 
     @Override

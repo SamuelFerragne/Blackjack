@@ -30,7 +30,9 @@ public class BoutonHit2d extends ObjetBlackjack2d {
 
     @Override
     protected boolean onMouseEvent(World2dMouseEventFx mouseEvent) {
-    	this.getWorld2d().mainJoueur.hit();
+    	if(this.getWorld2d().mainJoueur.isPlaying()) {
+        	this.getWorld2d().mainJoueur.hit();
+    	}
         return true;
     }
 
