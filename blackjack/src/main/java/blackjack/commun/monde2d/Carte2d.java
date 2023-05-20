@@ -70,6 +70,14 @@ public class Carte2d extends ObjetBlackjack2d {
 		this.setTopLeftY(y);
 	}
 	
+	public int getNumero() {
+		return this.numero;
+	}
+	
+	public String getSorte() {
+		return this.sorte;
+	}
+	
 	@Override
 	 public void initialize() {
        setWidth(100);
