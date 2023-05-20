@@ -6,6 +6,7 @@ import ca.ntro.app.fx.controls.ResizableWorld2dCanvasFx;
 import ca.ntro.app.fx.controls.World2dMouseEventFx;
 import javafx.animation.*;
 import javafx.scene.Node;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
@@ -77,27 +78,29 @@ public class Carte2d extends ObjetBlackjack2d {
    }
 
 	@Override
-	public void drawOn(ResizableWorld2dCanvasFx canvas) {
-	        canvas.drawOnWorld(gc -> {
+	public void drawOnWorld(GraphicsContext gc) {
+
+		gc.save();
+		if (afficher) {
+    		gc.drawImage(image, 
+            		getTopLeftX(),
+                    getTopLeftY(),
+                    getWidth(),
+                    getHeight());
+    	}else {
+    		gc.drawImage(BACK, 
+            		getTopLeftX(),
+                    getTopLeftY(),
+                    getWidth(),
+                    getHeight());
+    	}
+		
+		gc.fillText("X :" +Double.toString(this.getTopLeftX()), getTopLeftX(), getTopLeftY());
+    	gc.fillText("Y :" +Double.toString(this.getTopLeftY()), getTopLeftX() + 50, getTopLeftX());
+     	gc.fillText("secondesRestante :" +Double.toString(secondesRestantesRotation), getTopLeftX(), getTopLeftX()-10);
+     	
+		gc.restore();
 	        	
-	        	if (afficher) {
-	        		gc.drawImage(image, 
-		            		getTopLeftX(),
-	                        getTopLeftY(),
-	                        getWidth(),
-	                        getHeight());
-	        	}else {
-	        		gc.drawImage(BACK, 
-		            		getTopLeftX(),
-	                        getTopLeftY(),
-	                        getWidth(),
-	                        getHeight());
-	        	}
-	      
-	        	gc.fillText("X :" +Double.toString(this.getTopLeftX()), getTopLeftX(), getTopLeftY());
-	        	gc.fillText("Y :" +Double.toString(this.getTopLeftY()), getTopLeftX() + 50, getTopLeftX());
-	        	
-	        });
 	    }
 
 	@Override

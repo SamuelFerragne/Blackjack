@@ -20,7 +20,7 @@ public class MondeBlackjack2d extends World2dFx {
         setWidth(LARGEUR_MONDE);
         setHeight(HAUTEUR_MONDE);
 
-        carte = new Carte2d(11, "Coeur", 100, 100);
+        carte = new Carte2d(1, "Trefle", 100, 100);
 
         addObject2d(carte);
         
