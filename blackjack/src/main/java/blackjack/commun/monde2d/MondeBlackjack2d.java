@@ -22,6 +22,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
+
 public class MondeBlackjack2d extends World2dFx {
 
 	public static final double LARGEUR_MONDE = 640;
@@ -95,9 +96,11 @@ public class MondeBlackjack2d extends World2dFx {
 
 	@Override
 	protected void onMouseEventNotConsumed(World2dMouseEventFx mouseEvent) {
-		// TODO Auto-generated method stub
 		
 	}
+	
+	
+	
 
 	
 }
