@@ -59,6 +59,9 @@ public class Carte2d extends ObjetBlackjack2d {
 		this.sorte = sorte;
 		this.image = new Image("/imagesCartes/" + numero+sorte +".png");
 		
+		this.setWidth(100);
+	    this.setHeight(this.getWidth() * 1.4);
+		
 	}
 	
 	public Carte2d(int numero, String sorte, double x, double y) {
@@ -69,6 +72,14 @@ public class Carte2d extends ObjetBlackjack2d {
 		
 		this.setTopLeftX(x);
 		this.setTopLeftY(y);
+		
+		this.setWidth(100);
+	    this.setHeight(this.getWidth() * 1.4);
+	}
+
+	
+	public String getSorte() {
+		return this.sorte;
 	}
 	
 	@Override
@@ -79,7 +90,6 @@ public class Carte2d extends ObjetBlackjack2d {
 
 	@Override
 	public void drawOnWorld(GraphicsContext gc) {
-
 		gc.save();
 		if (afficher) {
     		gc.drawImage(image, 
@@ -87,6 +97,7 @@ public class Carte2d extends ObjetBlackjack2d {
                     getTopLeftY(),
                     getWidth(),
                     getHeight());
+    		
     	}else {
     		gc.drawImage(BACK, 
             		getTopLeftX(),
@@ -95,12 +106,11 @@ public class Carte2d extends ObjetBlackjack2d {
                     getHeight());
     	}
 		
-		gc.fillText("X :" +Double.toString(this.getTopLeftX()), getTopLeftX(), getTopLeftY());
-    	gc.fillText("Y :" +Double.toString(this.getTopLeftY()), getTopLeftX() + 50, getTopLeftX());
-     	gc.fillText("secondesRestante :" +Double.toString(secondesRestantesRotation), getTopLeftX(), getTopLeftX()-10);
+		
+		gc.fillText("X :" +Double.toString(this.getTopLeftX()), getTopLeftX(), getTopLeftY()-10);
+    	gc.fillText("Y :" +Double.toString(this.getTopLeftY()), getTopLeftX(), getTopLeftY());
      	
-		gc.restore();
-	        	
+    	gc.restore();
 	    }
 
 	@Override
@@ -130,26 +140,32 @@ public class Carte2d extends ObjetBlackjack2d {
 		secondesRestantesRotation = DUREE_ANIMATION;
 	}
 	
-	public void moveTo(double x, double y) {
-		double distanceX = (x - getTopLeftX());
-		double distanceY = (y - getTopLeftY());
+	public void moveTo (double x, double y) {
+		this.setTopLeftX(x);
+		this.setTopLeftY(y);
+		
+		//Le mouvement des cartes ne fonctionne pas freeze automatiquement
+		//Un thread pourrait regler le probleme
+		/*
+		double distanceRestanteX = (x - this.getTopLeftX());
+		double distanceRestanteY = (y - this.getTopLeftY());
 	
-		double velocityX = distanceX / distanceY * velocity;
-		double velocityY = distanceY / distanceX * velocity;
+		double velocityX = distanceRestanteX / distanceRestanteY * velocity;
+		double velocityY = distanceRestanteY / distanceRestanteX * velocity;
 		
 		
-		this.setSpeedX(velocityX);
-		this.setSpeedY(velocityY);
+		this.setSpeedX(velocity);
+		this.setSpeedY(velocity);
 		
-		if(distanceX < 1) {
+		if(distanceRestanteX < 100) {
 			this.setTopLeftX(x);
 			this.setSpeedX(0);
 		}
-		if(distanceY < 1) {
+		if(distanceRestanteY < 100) {
 			this.setTopLeftY(y);
 			this.setSpeedY(0);
 		}
-		
+		*/
 		
 	}
 }
