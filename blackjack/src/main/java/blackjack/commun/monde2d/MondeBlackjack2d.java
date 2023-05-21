@@ -49,7 +49,6 @@ public class MondeBlackjack2d extends World2dFx {
         setWidth(LARGEUR_MONDE);
         setHeight(HAUTEUR_MONDE);
 
-        
         mainJouant = 0;
 		Carte2d[] tabCartes = {new Carte2d(13,"Trefle"),new Carte2d(13,"Coeur")};
 		List<Carte2d> cartes = new ArrayList<>(Arrays.asList(tabCartes));
@@ -68,12 +67,15 @@ public class MondeBlackjack2d extends World2dFx {
         boutonBet = new BoutonBet();
         boutonSplit2d = new BoutonSplit2d();
         
-        for(Main main : mainsJoueur) {
+    	int decalageMain = 0;
+    	for(Main main : mainsJoueur) {
         	addObject2d(main);
-        	
+        	main.setTopLeftX(main.getTopLeftX() + decalageMain);
+        	decalageMain+=300;
         }
-
+    	
        
+        
         addObject2d(boutonDD);
         addObject2d(boutonHit);
         addObject2d(boutonStand);
@@ -82,8 +84,6 @@ public class MondeBlackjack2d extends World2dFx {
         addObject2d(boutonAjoutBet);
         addObject2d(boutonBet);
         addObject2d(boutonSplit2d);
-        
-        
     }
 
     @Override

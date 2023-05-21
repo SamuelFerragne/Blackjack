@@ -163,14 +163,6 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
 	@Override
 	public void drawOnWorld(GraphicsContext gc) {
 		
-		int place = 300;
-		for(Main main:this.getWorld2d().mainsJoueur) {
-    		gc.fillText(main.toString(), place, place);
-    		place+=10;
-    	}
-
-		gc.fillText(this.getWorld2d().mainsJoueur.get(this.getWorld2d().mainJouant).toString(), 100, 100);
-		
 		int decalage = 0;
     	for(Carte2d carte : getCartes()) {
     		carte.drawOnWorld(gc);
@@ -178,6 +170,9 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
     		carte.setAfficher(true);
     		decalage += 50;
     	}
+
+		gc.fillText(this.getWorld2d().mainsJoueur.get(this.getWorld2d().mainJouant).toString(), 100, 100);
+		
 	}
 
 	@Override
