@@ -50,9 +50,6 @@ public class Carte2d extends ObjetBlackjack2d {
 
 	private double velocity = 200; 
 	
-    private static final double DUREE_ANIMATION = 2;
-    private double secondesRestantesRotation = 2;
-
     
 	public Carte2d(int numero, String sorte) {
 		super();
@@ -112,9 +109,9 @@ public class Carte2d extends ObjetBlackjack2d {
                     getHeight());
     	}
 		
-		//debug
-		//gc.fillText("X :" +Double.toString(this.getTopLeftX()), getTopLeftX(), getTopLeftY()-10);
-    	//gc.fillText("Y :" +Double.toString(this.getTopLeftY()), getTopLeftX(), getTopLeftY());
+		
+		gc.fillText("X :" +Double.toString(this.getTopLeftX()), getTopLeftX(), getTopLeftY()-10);
+    	gc.fillText("Y :" +Double.toString(this.getTopLeftY()), getTopLeftX(), getTopLeftY());
      	
     	gc.restore();
 	    }
@@ -135,23 +132,15 @@ public class Carte2d extends ObjetBlackjack2d {
 	@Override
 	public void onTimePasses(double secondsElapsed) {
 	    super.onTimePasses(secondsElapsed);
-
-	    if(secondesRestantesRotation > 0) {
-	    	secondesRestantesRotation -= secondsElapsed;
-	    }
-
 	}
-	
-	public void animationRotation() {
-		secondesRestantesRotation = DUREE_ANIMATION;
-	}
+
 	
 	public void moveTo (double x, double y) {
 		this.setTopLeftX(x);
 		this.setTopLeftY(y);
 		
 		//Le mouvement des cartes ne fonctionne ce déplace instantanement
-		//a cause de l'implementation des mains
+		//a cause de l'implementation des mains 
 		/*
 		double distanceRestanteX = (x - this.getTopLeftX());
 		double distanceRestanteY = (y - this.getTopLeftY());
