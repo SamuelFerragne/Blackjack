@@ -52,6 +52,7 @@ public class BoutonBet extends ObjetBlackjack2d {
         	mainsJoueur.get(mainEnJeux).setWager(this.getWorld2d().zoneBet2d.getBet());
         	mainsJoueur.get(mainEnJeux).setPlaying(true);
         	mainsJoueur.get(mainEnJeux).setCartes(new ArrayList<>());
+        	this.getWorld2d().argentJoueur -= this.getWorld2d().zoneBet2d.getBet();
         	this.getWorld2d().Jeu();
     	}
         return true;

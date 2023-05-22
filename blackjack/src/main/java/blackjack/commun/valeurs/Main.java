@@ -18,6 +18,7 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
 	private int score;
 	private int wager;
 	private boolean isPlaying;
+	public boolean busted = false;
 	
 	public Main() {
 
@@ -64,13 +65,29 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
 	}
 
 	public void calculerScore(List<Carte2d> cartes) {
-		int score = 0;
-		
-		for (Carte2d carte : cartes){
-			score += carte.getNumero();
-		}
-		
-		this.score = score;
+	    int score = 0;
+	    int nbAs = 0;
+
+	    for (Carte2d carte : cartes) {
+	        int numero = carte.getNumero();
+
+	        if (numero == 1) {
+	            score += 11;
+	            nbAs++;
+	        } else {
+	            score += numero;
+	        }
+	    }
+
+	    while (score > 21 && nbAs > 0) {
+	        score -= 10;
+	        nbAs--;
+	    }
+	    this.score = score;
+	    if(this.score > 21) {
+	    	this.busted = true;
+	    	this.isPlaying = true;
+	    }
 	}
 
 	public int getWager() {
@@ -148,6 +165,10 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
 			this.cartes.remove(1);
 		}
 	}
+	
+	public boolean isBusted() {
+		return this.busted;
+	}
 	public boolean canSplit() {
 		boolean canSplit = false;
 		
@@ -183,6 +204,20 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
 	
 	public void cacherCarteByIndex(int i) {
 		cartes.get(i).setAfficher(false);
+	}
+	
+	public void win() {
+		this.getWorld2d().argentJoueur += wager*2;
+		this.setPlaying(false);
+	}
+	
+	public void draw() {
+		this.getWorld2d().argentJoueur += wager;
+		this.setPlaying(false);
+	}
+	
+	public void lose() {
+		this.setPlaying(false);
 	}
 	
 	
