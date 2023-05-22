@@ -12,6 +12,7 @@ import blackjack.commun.monde2d.boutons.BoutonStand2d;
 import blackjack.commun.monde2d.zonebet.BoutonAjoutBet;
 import blackjack.commun.monde2d.zonebet.BoutonBet;
 import blackjack.commun.monde2d.zonebet.BoutonReduireBet;
+import blackjack.commun.monde2d.zonebet.LabelArgent;
 import blackjack.commun.monde2d.zonebet.ZoneBet2d;
 import blackjack.commun.valeurs.Main;
 import ca.ntro.app.fx.controls.ResizableWorld2dCanvasFx;
@@ -47,6 +48,7 @@ public class MondeBlackjack2d extends World2dFx {
     private BoutonReduireBet boutonReduireBet;
     public BoutonBet boutonBet;
     public BoutonSplit2d boutonSplit2d;
+    public LabelArgent labelArgent;
     ResizableWorld2dCanvasFx canvas;
     
     
@@ -73,7 +75,7 @@ public class MondeBlackjack2d extends World2dFx {
         zoneBet2d =  new ZoneBet2d(0);
         boutonBet = new BoutonBet();
         boutonSplit2d = new BoutonSplit2d();
-        
+        labelArgent = new LabelArgent();
         
         
         //boutons d'action
@@ -88,6 +90,7 @@ public class MondeBlackjack2d extends World2dFx {
         addObject2d(boutonAjoutBet);
         addObject2d(boutonBet);
         
+        addObject2d(labelArgent);
         
         //Juste pour afficher un paquet de carte pour faire beau
         addObject2d(new Carte2d(1, "Pique", 1100, 30));

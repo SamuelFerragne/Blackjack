@@ -89,7 +89,7 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
 	    	this.busted = true;
 	    	this.isPlaying = false;
 	    }
-	    this.getWorld2d().checkForWinOrBust();
+	    
 	}
 
 	public int getWager() {
@@ -132,6 +132,7 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
 
 	public void stand() {
 		this.isPlaying = false;
+		this.getWorld2d().dealerPlay();
 	}
 	
 	public void doubleDown() {
