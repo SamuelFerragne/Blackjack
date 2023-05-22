@@ -3,6 +3,7 @@ package blackjack.commun.valeurs;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import blackjack.commun.monde2d.Carte2d;
 import blackjack.commun.monde2d.MondeBlackjack2d;
@@ -86,8 +87,9 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
 	    this.score = score;
 	    if(this.score > 21) {
 	    	this.busted = true;
-	    	this.isPlaying = true;
+	    	this.isPlaying = false;
 	    }
+	    this.getWorld2d().checkForWinOrBust();
 	}
 
 	public int getWager() {
@@ -195,6 +197,9 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
     		//carte.setAfficher(true);
     		decalage += 50;
     	}
+    	
+    	//debug
+    	gc.fillText(this.toString(), 500, 500);
 
 	}
 	

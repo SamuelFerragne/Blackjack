@@ -57,9 +57,12 @@ public class MondeBlackjack2d extends World2dFx {
         setHeight(HAUTEUR_MONDE);
 
         mainJouant = 0;
-		
+		Carte2d[] tabCartes = {new Carte2d(13, "Trefle")};
+		List<Carte2d> cartes = new ArrayList<>(Arrays.asList(tabCartes));
         mainsJoueur = new ArrayList<Main>();
+        mainsJoueur.add(new Main(cartes,100,false));
         
+        mainDealer = new Main(cartes, 0, false);
         
         //mainsJoueur.add(new Main());
         boutonDD = new BoutonDoubleDown2d();
@@ -140,12 +143,14 @@ public class MondeBlackjack2d extends World2dFx {
 	}
 	
 	public void Jeu() {
+		mainDealer.clear();
+		mainDealer.setPlaying(true);
 		for(int i = 0; i <= 1; i++) {
 			for(Main main : mainsJoueur) {
 				main.hit();
 			}
 			mainDealer.hit();
-			checkForWinOrBust();
+			//checkForWinOrBust();
 		}
 
 	}
@@ -179,7 +184,7 @@ public class MondeBlackjack2d extends World2dFx {
 		
 		if(!mainDealer.isBusted()) {
 			for(Main main : mainsJoueur) {
-				if(!main.isBusted()) {
+				if(!main.isBusted() && !main.isPlaying()) {
 					main.win();
 				}
 			}
