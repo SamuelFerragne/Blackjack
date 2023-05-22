@@ -75,8 +75,7 @@ public class VueBlackjack extends ViewFx {
 
 
 	public void afficherMains(MondeBlackjack2d mondeBlackjack2d) {
-		
-		mondeBlackjack2d.afficherMains();
+		mondeBlackjack2d.afficherMainsJoueur();
 		
 	}
 

@@ -53,11 +53,15 @@ public class Carte2d extends ObjetBlackjack2d {
     private static final double DUREE_ANIMATION = 2;
     private double secondesRestantesRotation = 2;
 
+    
 	public Carte2d(int numero, String sorte) {
 		super();
 		this.numero = numero;
 		this.sorte = sorte;
 		this.image = new Image("/imagesCartes/" + numero+sorte +".png");
+		
+		this.setTopLeftX(1100);
+		this.setTopLeftY(30);
 		
 		this.setWidth(100);
 	    this.setHeight(this.getWidth() * 1.4);
@@ -84,8 +88,10 @@ public class Carte2d extends ObjetBlackjack2d {
 	
 	@Override
 	 public void initialize() {
-       setWidth(100);
-       setHeight(this.getWidth() * 1.4); //carte de poker 1.4x plus grande que large
+		setTopLeftX(1100);
+		setTopLeftY(30);
+		setWidth(100);
+		setHeight(this.getWidth() * 1.4); //carte de poker 1.4x plus grande que large
    }
 
 	@Override
@@ -106,9 +112,9 @@ public class Carte2d extends ObjetBlackjack2d {
                     getHeight());
     	}
 		
-		
-		gc.fillText("X :" +Double.toString(this.getTopLeftX()), getTopLeftX(), getTopLeftY()-10);
-    	gc.fillText("Y :" +Double.toString(this.getTopLeftY()), getTopLeftX(), getTopLeftY());
+		//debug
+		//gc.fillText("X :" +Double.toString(this.getTopLeftX()), getTopLeftX(), getTopLeftY()-10);
+    	//gc.fillText("Y :" +Double.toString(this.getTopLeftY()), getTopLeftX(), getTopLeftY());
      	
     	gc.restore();
 	    }
@@ -144,8 +150,8 @@ public class Carte2d extends ObjetBlackjack2d {
 		this.setTopLeftX(x);
 		this.setTopLeftY(y);
 		
-		//Le mouvement des cartes ne fonctionne pas freeze automatiquement
-		//Un thread pourrait regler le probleme
+		//Le mouvement des cartes ne fonctionne ce déplace instantanement
+		//a cause de l'implementation des mains
 		/*
 		double distanceRestanteX = (x - this.getTopLeftX());
 		double distanceRestanteY = (y - this.getTopLeftY());
@@ -154,14 +160,14 @@ public class Carte2d extends ObjetBlackjack2d {
 		double velocityY = distanceRestanteY / distanceRestanteX * velocity;
 		
 		
-		this.setSpeedX(velocity);
-		this.setSpeedY(velocity);
+		this.setSpeedX(velocityX);
+		this.setSpeedY(velocityY);
 		
-		if(distanceRestanteX < 100) {
+		if(distanceRestanteX < 1) {
 			this.setTopLeftX(x);
 			this.setSpeedX(0);
 		}
-		if(distanceRestanteY < 100) {
+		if(distanceRestanteY < 1) {
 			this.setTopLeftY(y);
 			this.setSpeedY(0);
 		}
