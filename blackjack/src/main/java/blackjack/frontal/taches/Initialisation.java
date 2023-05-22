@@ -123,7 +123,7 @@ public class Initialisation {
 
                  Window window = (Window) inputs.get(window());
 
-                 window.resize(600, 900);
+                 window.resize(1280, 720);
 
                  window.show();
 

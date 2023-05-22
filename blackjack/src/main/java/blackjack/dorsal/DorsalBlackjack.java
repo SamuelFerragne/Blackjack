@@ -2,13 +2,13 @@ package blackjack.dorsal;
 
 import ca.ntro.app.backend.LocalBackendNtro;
 import ca.ntro.app.tasks.backend.BackendTasks;
-import blackjack.dorsal.taches.ModifierMonModele;
+import blackjack.dorsal.taches.ModifierModeleBlackjack;
 
 public class DorsalBlackjack extends LocalBackendNtro {
 
 	@Override
 	public void createTasks(BackendTasks tasks) {
-		ModifierMonModele.creerTaches(tasks);
+		ModifierModeleBlackjack.creerTaches(tasks);
 	}
 
 	@Override

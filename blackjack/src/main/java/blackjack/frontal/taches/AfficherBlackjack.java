@@ -4,6 +4,8 @@ package blackjack.frontal.taches;
 import ca.ntro.app.tasks.frontend.FrontendTasks;
 import ca.ntro.core.reflection.observer.Modified;
 import blackjack.commun.modeles.ModeleBlackjack;
+import blackjack.frontal.donnees.DonneesVueBlackjack;
+import blackjack.frontal.evenements.EvtClicSouris;
 import blackjack.frontal.vues.VueBlackjack;
 
 import static ca.ntro.app.tasks.frontend.FrontendTasks.*;
@@ -20,9 +22,12 @@ public class AfficherBlackjack {
 		     .andContains(subTasks -> {
 		    	 
 		    	 afficherBlackjack(subTasks);
+
  
 		     });
 	}
+	
+
 
 	private static void afficherBlackjack(FrontendTasks tasks) {
 
