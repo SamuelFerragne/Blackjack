@@ -35,6 +35,7 @@ public class MondeBlackjack2d extends World2dFx {
 
     public static final Image OFF = new Image("imagesBoutons/off.png");
 
+    public double argentJoueur = 2000;
     private BoutonDoubleDown2d boutonDD;
     private BoutonHit2d boutonHit;
     private BoutonStand2d boutonStand;
