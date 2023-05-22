@@ -200,7 +200,7 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
     	}
     	
     	//debug
-    	gc.fillText(this.toString(), 500, 500);
+    	//gc.fillText(this.toString(), 500, 500);
 
 	}
 	
