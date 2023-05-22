@@ -20,9 +20,8 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
 	private boolean isPlaying;
 	
 	public Main() {
-		Carte2d[] tabCartes = {};
-		List<Carte2d> cartes = new ArrayList<>(Arrays.asList(tabCartes));
-		setCartes(cartes);
+
+		setCartes(new ArrayList<>());
 		setPlaying(false);
 	}
 	
@@ -105,6 +104,7 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
 		}
 		
 		Carte2d nouvelleCarte = new Carte2d(valeur,sorte);
+		nouvelleCarte.setAfficher(true);
 		
 		this.cartes.add(nouvelleCarte);
 		
@@ -171,14 +171,21 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
     	for(Carte2d carte : getCartes()) {
     		carte.drawOnWorld(gc);
     		carte.moveTo(this.getTopLeftX() + decalage, this.getTopLeftY());
-    		carte.setAfficher(true);
+    		//carte.setAfficher(true);
     		decalage += 50;
     	}
 
 	}
 	
+	public void afficherCarteByIndex(int i) {
+		cartes.get(i).setAfficher(true);
+	}
 	
-
+	public void cacherCarteByIndex(int i) {
+		cartes.get(i).setAfficher(false);
+	}
+	
+	
 	@Override
 	public String id() {
 		// TODO Auto-generated method stub

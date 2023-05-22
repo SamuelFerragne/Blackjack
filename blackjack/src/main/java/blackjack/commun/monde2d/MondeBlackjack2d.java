@@ -28,7 +28,11 @@ public class MondeBlackjack2d extends World2dFx {
 
 	public static final double LARGEUR_MONDE = 1280;
     public static final double HAUTEUR_MONDE = 720;
-    public double argentJoueur = 2000;
+    public static final double MAIN_JOUEUR_POSX = 600;
+    public static final double MAIN_JOUEUR_POSY = 550;
+    public static final double MAIN_DEALER_POSX = 500;
+    public static final double MAIN_DEALER_POSY = 180;
+
     public static final Image OFF = new Image("imagesBoutons/off.png");
 
     private BoutonDoubleDown2d boutonDD;
@@ -54,6 +58,8 @@ public class MondeBlackjack2d extends World2dFx {
         mainJouant = 0;
 		Carte2d[] tabCartes = {new Carte2d(13,"Trefle"),new Carte2d(13,"Coeur")};
 		List<Carte2d> cartes = new ArrayList<>(Arrays.asList(tabCartes));
+		
+		
 	
         mainsJoueur = new ArrayList<Main>();
         
@@ -68,16 +74,25 @@ public class MondeBlackjack2d extends World2dFx {
         zoneBet2d =  new ZoneBet2d(0);
         boutonBet = new BoutonBet();
         boutonSplit2d = new BoutonSplit2d();
-     
         
+        
+        
+        //boutons d'action
         addObject2d(boutonDD);
         addObject2d(boutonHit);
         addObject2d(boutonStand);
+        addObject2d(boutonSplit2d);
+        
+        //boutons de bet
         addObject2d(zoneBet2d);
         addObject2d(boutonReduireBet);
         addObject2d(boutonAjoutBet);
         addObject2d(boutonBet);
-        addObject2d(boutonSplit2d);
+        
+        
+        //Juste pour afficher un paquet de carte pour faire beau
+        addObject2d(new Carte2d(1, "Pique", 1100, 30));
+        
     }
 
     @Override
@@ -85,7 +100,8 @@ public class MondeBlackjack2d extends World2dFx {
         canvas.drawOnWorld(gc -> {
             dessinerTerrain(gc);  
         });
-        afficherMains();
+        afficherMainsJoueur();
+        afficherMainDealer();
         super.drawOn(canvas);
         this.canvas = canvas;
     }
@@ -106,18 +122,25 @@ public class MondeBlackjack2d extends World2dFx {
 		
 	}
 
-	public void afficherMains() {
+	public void afficherMainsJoueur() {
 		int decalageMain = 0;
     	for(Main main : mainsJoueur) {
-    		main.moveTo(650 + decalageMain, 550);
+    		main.moveTo(MAIN_JOUEUR_POSX + decalageMain, MAIN_JOUEUR_POSY);
+    		for(Carte2d carte : main.getCartes()) {
+    			carte.setAfficher(true);
+    		}
     		addObject2d(main);
     		decalageMain += 300;
         }
-		
 	}
 	
 	public void afficherMainDealer() {
-		addObject2d(mainDealer);
+		if(mainDealer != null) {
+			mainDealer.moveTo(MAIN_DEALER_POSX, MAIN_DEALER_POSY);
+			mainDealer.afficherCarteByIndex(0);
+			addObject2d(mainDealer);
+		}
+		
 	}
 	
 	public void Jeu() {
