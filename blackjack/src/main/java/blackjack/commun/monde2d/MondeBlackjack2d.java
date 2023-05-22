@@ -142,4 +142,20 @@ public class MondeBlackjack2d extends World2dFx {
 		}
 		
 	}
+	
+	public void Jeu() {
+		for(int i = 0; i <= 1; i++) {
+			for(Main main : mainsJoueur) {
+				main.hit();
+			}
+			mainDealer.hit();
+		}
+
+	}
+	
+	public void checkForWinOrBust() {
+		if(mainDealer.getCartes().size() == 2) {
+			
+		}
+	}
 }

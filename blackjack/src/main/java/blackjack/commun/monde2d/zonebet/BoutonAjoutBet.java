@@ -34,11 +34,17 @@ public class BoutonAjoutBet extends ObjetBlackjack2d {
 	@Override
 	protected boolean onMouseEvent(World2dMouseEventFx mouseEvent) {
 		if(this.getWorld2d().zoneBet2d.getBet() < 250) {
-			this.getWorld2d().zoneBet2d.setBet(this.getWorld2d().zoneBet2d.getBet()+50);
+			if(this.getWorld2d().zoneBet2d.getBet() + 50 <= this.getWorld2d().argentJoueur) {
+				this.getWorld2d().zoneBet2d.setBet(this.getWorld2d().zoneBet2d.getBet()+50);
+			}
 		}else if(this.getWorld2d().zoneBet2d.getBet() < 1000) {
-			this.getWorld2d().zoneBet2d.setBet(this.getWorld2d().zoneBet2d.getBet()+250);
+			if(this.getWorld2d().zoneBet2d.getBet() + 250 <= this.getWorld2d().argentJoueur) {
+				this.getWorld2d().zoneBet2d.setBet(this.getWorld2d().zoneBet2d.getBet()+250);
+			}
 		}else {
-			this.getWorld2d().zoneBet2d.setBet(this.getWorld2d().zoneBet2d.getBet()+500);
+			if(this.getWorld2d().zoneBet2d.getBet() + 500 <= this.getWorld2d().argentJoueur) {
+				this.getWorld2d().zoneBet2d.setBet(this.getWorld2d().zoneBet2d.getBet()+500);
+			}
 		}
 		return true;
 	}
