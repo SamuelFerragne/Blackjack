@@ -159,21 +159,25 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
 		
 		return canSplit;
 	}
+	
+	public void moveTo (double x, double y) {
+		this.setTopLeftX(x);
+		this.setTopLeftY(y);
+	}
 
 	@Override
 	public void drawOnWorld(GraphicsContext gc) {
-		
 		int decalage = 0;
     	for(Carte2d carte : getCartes()) {
     		carte.drawOnWorld(gc);
-    		carte.moveTo(650 + decalage, 550);
+    		carte.moveTo(this.getTopLeftX() + decalage, this.getTopLeftY());
     		carte.setAfficher(true);
     		decalage += 50;
     	}
 
-		gc.fillText(this.getWorld2d().mainsJoueur.get(this.getWorld2d().mainJouant).toString(), 100, 100);
-		
 	}
+	
+	
 
 	@Override
 	public String id() {

@@ -15,6 +15,8 @@ public class DonneesVueBlackjack implements ViewData{
 		
 		vueBlackjack.viderCanvas();
 		vueBlackjack.afficherPong2d(mondeBlackjack2d);
+		vueBlackjack.afficherMains(mondeBlackjack2d);
+		
 	}
 
 	
@@ -26,6 +28,9 @@ public class DonneesVueBlackjack implements ViewData{
 	
 	 public void reagirTempsQuiPasse(double secondesEcoulees) {
 	        mondeBlackjack2d.onTimePasses(secondesEcoulees);
+	        
 	 }
+	 
+	 
 
 }

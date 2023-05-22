@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import blackjack.commun.monde2d.MondeBlackjack2d;
+import blackjack.commun.valeurs.Main;
 import blackjack.frontal.controles.CanvasPartie;
 import blackjack.frontal.evenements.EvtAfficherAccueil;
 import blackjack.frontal.evenements.EvtClicSouris;
@@ -70,6 +71,13 @@ public class VueBlackjack extends ViewFx {
 
 	public void afficherPong2d(MondeBlackjack2d mondeBlackjack2d) {
 		mondeBlackjack2d.drawOn(canvasPartie);
+	}
+
+
+	public void afficherMains(MondeBlackjack2d mondeBlackjack2d) {
+		
+		mondeBlackjack2d.afficherMains();
+		
 	}
 
 }

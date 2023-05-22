@@ -43,6 +43,7 @@ public class MondeBlackjack2d extends World2dFx {
     public BoutonSplit2d boutonSplit2d;
     ResizableWorld2dCanvasFx canvas;
     
+    
 
     @Override
     protected void initialize() {
@@ -66,15 +67,7 @@ public class MondeBlackjack2d extends World2dFx {
         zoneBet2d =  new ZoneBet2d(0);
         boutonBet = new BoutonBet();
         boutonSplit2d = new BoutonSplit2d();
-        
-    	int decalageMain = 0;
-    	for(Main main : mainsJoueur) {
-        	addObject2d(main);
-        	main.setTopLeftX(main.getTopLeftX() + decalageMain);
-        	decalageMain+=300;
-        }
-    	
-       
+     
         
         addObject2d(boutonDD);
         addObject2d(boutonHit);
@@ -89,9 +82,9 @@ public class MondeBlackjack2d extends World2dFx {
     @Override
     public void drawOn(ResizableWorld2dCanvasFx canvas) {
         canvas.drawOnWorld(gc -> {
-            dessinerTerrain(gc);
+            dessinerTerrain(gc);  
         });
-
+        afficherMains();
         super.drawOn(canvas);
         this.canvas = canvas;
     }
@@ -102,6 +95,7 @@ public class MondeBlackjack2d extends World2dFx {
         gc.setLineWidth(1);
 
         gc.strokeRect(0, 0, getWidth(), getHeight());
+        
 
         gc.restore();
     }
@@ -110,5 +104,18 @@ public class MondeBlackjack2d extends World2dFx {
 	protected void onMouseEventNotConsumed(World2dMouseEventFx mouseEvent) {
 		
 	}
+
+	public void afficherMains() {
+		int decalageMain = 0;
+    	for(Main main : mainsJoueur) {
+    		main.moveTo(650 + decalageMain, 550);
+    		addObject2d(main);
+    		decalageMain += 300;
+        }
+		
+	}
 	
+	public void afficherMainDealer() {
+		addObject2d(mainDealer);
+	}
 }
