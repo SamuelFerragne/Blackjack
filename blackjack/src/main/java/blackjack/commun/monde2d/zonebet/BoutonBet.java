@@ -1,8 +1,10 @@
 package blackjack.commun.monde2d.zonebet;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import blackjack.commun.monde2d.Carte2d;
 import blackjack.commun.monde2d.ObjetBlackjack2d;
 import blackjack.commun.valeurs.Main;
 import ca.ntro.app.fx.controls.World2dMouseEventFx;
@@ -46,12 +48,13 @@ public class BoutonBet extends ObjetBlackjack2d {
     	List<Main> mainsJoueur = this.getWorld2d().mainsJoueur;
     	
     	if(!mainsJoueur.get(mainEnJeux).isPlaying()) {
-    		for(Main main : mainsJoueur) {
-    			main.clear();
-    		}
-        	mainsJoueur.get(mainEnJeux).setWager(this.getWorld2d().zoneBet2d.getBet());
-        	mainsJoueur.get(mainEnJeux).setPlaying(true);
-        	mainsJoueur.get(mainEnJeux).setCartes(new ArrayList<>());
+    		this.getWorld2d().mainsJoueur.clear();
+    		
+    		Carte2d[] tabCartes = {};
+    		List<Carte2d> cartes = new ArrayList<>(Arrays.asList(tabCartes));
+    		
+    		this.getWorld2d().mainsJoueur.add(new Main(cartes,this.getWorld2d().zoneBet2d.getBet(), true));
+    		
         	this.getWorld2d().argentJoueur -= this.getWorld2d().zoneBet2d.getBet();
         	this.getWorld2d().Jeu();
     	}

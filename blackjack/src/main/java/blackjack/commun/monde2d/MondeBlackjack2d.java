@@ -57,14 +57,9 @@ public class MondeBlackjack2d extends World2dFx {
         setHeight(HAUTEUR_MONDE);
 
         mainJouant = 0;
-		Carte2d[] tabCartes = {new Carte2d(13,"Trefle"),new Carte2d(13,"Coeur")};
-		List<Carte2d> cartes = new ArrayList<>(Arrays.asList(tabCartes));
 		
-		
-	
         mainsJoueur = new ArrayList<Main>();
         
-        mainsJoueur.add(new Main(cartes,100,true));
         
         //mainsJoueur.add(new Main());
         boutonDD = new BoutonDoubleDown2d();
@@ -157,11 +152,12 @@ public class MondeBlackjack2d extends World2dFx {
 	
 	public void dealerPlay() {
 		while(mainDealer.getScore()<17) {
-			
+			mainDealer.hit();
 		}
-
-		
-		
+		if(mainDealer.getScore() > 21) {
+			mainDealer.busted = true;
+		}
+		checkForWinOrBust();
 	}
 	
 	public void checkForWinOrBust() {
