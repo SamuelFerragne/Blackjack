@@ -28,6 +28,7 @@ public class MondeBlackjack2d extends World2dFx {
 
 	public static final double LARGEUR_MONDE = 1280;
     public static final double HAUTEUR_MONDE = 720;
+    public double argentJoueur = 2000;
     public static final Image OFF = new Image("imagesBoutons/off.png");
 
     private BoutonDoubleDown2d boutonDD;
@@ -117,5 +118,21 @@ public class MondeBlackjack2d extends World2dFx {
 	
 	public void afficherMainDealer() {
 		addObject2d(mainDealer);
+	}
+	
+	public void Jeu() {
+		for(int i = 0; i <= 1; i++) {
+			for(Main main : mainsJoueur) {
+				main.hit();
+			}
+			mainDealer.hit();
+		}
+
+	}
+	
+	public void checkForWinOrBust() {
+		if(mainDealer.getCartes().size() == 2) {
+			
+		}
 	}
 }
