@@ -153,8 +153,8 @@ public class MondeBlackjack2d extends World2dFx {
 				main.hit();
 			}
 			mainDealer.hit();
-			//checkForWinOrBust();
 		}
+		checkForWinOrBust();
 
 	}
 	
@@ -179,13 +179,13 @@ public class MondeBlackjack2d extends World2dFx {
 					else {
 						main.draw();
 					}
-				}else if(main.getScore() > 21) {
+				}else if(mainDealer.getScore() == 21) {
 					main.lose();
 				}
 			}
 		}
 		
-		if(!mainDealer.isBusted()) {
+		if(mainDealer.isBusted()) {
 			for(Main main : mainsJoueur) {
 				if(!main.isBusted() && !main.isPlaying()) {
 					main.win();
@@ -205,6 +205,8 @@ public class MondeBlackjack2d extends World2dFx {
 						main.lose();
 					}
 					
+				}else {
+					main.lose();
 				}
 			}
 		}

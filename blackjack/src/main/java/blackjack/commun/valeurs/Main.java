@@ -204,7 +204,7 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
     	}
     	
     	//debug
-    	gc.fillText(""+this.score, 500, 520);
+    	gc.fillText(""+this.score, 520, 500);
     	gc.fillText(""+this.getWorld2d().mainDealer.getScore(), 500, 500);
 
 	}
