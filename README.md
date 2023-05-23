@@ -14,6 +14,8 @@ Gestion des interactions user
 Partie non-graphique des boutons
 Gestion des évènements clic dans le monde2d
 Partie non-graphique des carte2d et main
+
+Médéric Bélec
 Logique du jeu de BlackJack
 Tour de jeu entre mainsJoueur et Dealer
 Vérification de victoire et défaite
