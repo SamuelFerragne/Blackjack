@@ -203,8 +203,12 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
     		decalage += 50;
     	}
     	
+    	decalage = 0;
     	//debug
-    	gc.fillText(""+this.score, 520, 500);
+    	for(Main main : this.getWorld2d().mainsJoueur) {
+    		gc.fillText(""+main.score, 520 + decalage, 500);
+    		decalage += 20;
+    	}
     	gc.fillText(""+this.getWorld2d().mainDealer.getScore(), 500, 500);
 
 	}
