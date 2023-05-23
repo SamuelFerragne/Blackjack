@@ -42,7 +42,7 @@ public class MondeBlackjack2d extends World2dFx {
     private BoutonStand2d boutonStand;
     public List<Main> mainsJoueur;
     public int mainJouant;
-    private Main mainDealer;
+    public Main mainDealer;
     public ZoneBet2d zoneBet2d;
     private BoutonAjoutBet boutonAjoutBet;
     private BoutonReduireBet boutonReduireBet;

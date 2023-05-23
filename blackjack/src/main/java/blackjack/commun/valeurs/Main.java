@@ -75,7 +75,10 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
 	        if (numero == 1) {
 	            score += 11;
 	            nbAs++;
-	        } else {
+	        } else if(numero > 10){
+	        	score += 10;
+
+	        }else {
 	            score += numero;
 	        }
 	    }
@@ -136,11 +139,12 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
 	}
 	
 	public void doubleDown() {
-		this.wager*=2;
-		this.hit();
-		calculerScore(this.cartes);
-		this.stand();
-	}
+		if(this.getWorld2d().argentJoueur >= wager)
+			this.getWorld2d().argentJoueur -= wager;
+			this.wager*=2;
+			this.hit();
+			this.stand();
+		}
 
 	public String toString() {
 		StringBuilder str = new StringBuilder();
@@ -200,7 +204,8 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
     	}
     	
     	//debug
-    	//gc.fillText(this.toString(), 500, 500);
+    	gc.fillText(""+this.score, 500, 520);
+    	gc.fillText(""+this.getWorld2d().mainDealer.getScore(), 500, 500);
 
 	}
 	
