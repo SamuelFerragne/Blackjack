@@ -139,7 +139,6 @@ public class MondeBlackjack2d extends World2dFx {
 	public void afficherMainDealer() {
 		if(mainDealer != null) {
 			mainDealer.moveTo(MAIN_DEALER_POSX, MAIN_DEALER_POSY);
-			mainDealer.afficherCarteByIndex(0);
 			addObject2d(mainDealer);
 		}
 		
@@ -154,11 +153,13 @@ public class MondeBlackjack2d extends World2dFx {
 			}
 			mainDealer.hit();
 		}
+		mainDealer.cacherCarteByIndex(0);
 		checkForWinOrBust();
 
 	}
 	
 	public void dealerPlay() {
+		mainDealer.afficherCarteByIndex(0);
 		while(mainDealer.getScore()<17) {
 			mainDealer.hit();
 		}
