@@ -48,6 +48,11 @@ public class BoutonBet extends ObjetBlackjack2d {
     	List<Main> mainsJoueur = this.getWorld2d().mainsJoueur;
     	
     	if(!mainsJoueur.get(mainEnJeux).isPlaying()) {
+    		for(Main main : mainsJoueur) {
+    			main.clear();
+    		}
+
+    		
     		this.getWorld2d().mainsJoueur.clear();
     		
     		Carte2d[] tabCartes = {};
