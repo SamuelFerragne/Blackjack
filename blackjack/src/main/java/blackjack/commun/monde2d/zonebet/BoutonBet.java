@@ -44,27 +44,34 @@ public class BoutonBet extends ObjetBlackjack2d {
 
     @Override
     protected boolean onMouseEvent(World2dMouseEventFx mouseEvent) {
-    	int mainEnJeux = this.getWorld2d().mainJouant;
+    	nouvelleMain();
+        return true;
+    }
+
+	public void nouvelleMain() {
+		int mainEnJeux = this.getWorld2d().mainJouant;
     	List<Main> mainsJoueur = this.getWorld2d().mainsJoueur;
     	
     	if(!mainsJoueur.get(mainEnJeux).isPlaying()) {
-    		for(Main main : mainsJoueur) {
-    			main.clear();
-    		}
 
+			for(Main main : mainsJoueur) {
+				main.clear();
+			}
     		
     		this.getWorld2d().mainsJoueur.clear();
     		
     		Carte2d[] tabCartes = {};
     		List<Carte2d> cartes = new ArrayList<>(Arrays.asList(tabCartes));
     		
-    		this.getWorld2d().mainsJoueur.add(new Main(cartes,this.getWorld2d().zoneBet2d.getBet(), true));
+    		Main mainJoueur00 = new Main(cartes,this.getWorld2d().zoneBet2d.getBet(), true);
+    		mainJoueur00.setWorld2d(getWorld2d());
+    		this.getWorld2d().mainsJoueur.add(mainJoueur00);
     		
         	this.getWorld2d().argentJoueur -= this.getWorld2d().zoneBet2d.getBet();
-        	this.getWorld2d().Jeu();
+
+        	this.getWorld2d().demarrerJeu();
     	}
-        return true;
-    }
+	}
 
     @Override
     public String id() {

@@ -10,27 +10,16 @@ public class DonneesVueBlackjack implements ViewData{
 
 	private MondeBlackjack2d mondeBlackjack2d = new MondeBlackjack2d();
 	
-	
 	public void afficherSur(VueBlackjack vueBlackjack) {
-		
 		vueBlackjack.viderCanvas();
-		vueBlackjack.afficherPong2d(mondeBlackjack2d);
-		vueBlackjack.afficherMains(mondeBlackjack2d);
-		
+		vueBlackjack.afficherMondeBlackjack2d(mondeBlackjack2d);
 	}
-
 	
 	public void reagirClicSouris(World2dMouseEventFx mouseEvent) {
-		
 		mondeBlackjack2d.dispatchMouseEvent(mouseEvent);
-	
 	}
 	
 	 public void reagirTempsQuiPasse(double secondesEcoulees) {
-	        mondeBlackjack2d.onTimePasses(secondesEcoulees);
-	        
+			mondeBlackjack2d.onTimePasses(secondesEcoulees);
 	 }
-	 
-	 
-
 }

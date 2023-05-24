@@ -127,8 +127,11 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
 		
 		Carte2d nouvelleCarte = new Carte2d(valeur,sorte);
 		nouvelleCarte.setAfficher(true);
+		nouvelleCarte.setWorld2d(getWorld2d());
 		
 		this.cartes.add(nouvelleCarte);
+		
+		positionerCartes();
 		
 		calculerScore(this.cartes);
 	}
@@ -158,9 +161,7 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
 	}
 	
 	public void clear() {
-		Carte2d[] tabCartes = {};
-		List<Carte2d> cartes = new ArrayList<>(Arrays.asList(tabCartes));
-		setCartes(cartes);
+		setCartes(new ArrayList<>());
 		setWager(0);
 	}
 	
@@ -246,7 +247,9 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
 
 	@Override
 	public void initialize() {
-		// TODO Auto-generated method stub
+    	for(Carte2d carte : getCartes()) {
+    		carte.initialize();
+    	}
 	}
 
 	@Override

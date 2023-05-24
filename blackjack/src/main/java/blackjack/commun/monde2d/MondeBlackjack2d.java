@@ -20,6 +20,7 @@ import ca.ntro.app.fx.controls.ResizableWorld2dCanvasFx;
 import ca.ntro.app.fx.controls.World2dMouseEventFx;
 import ca.ntro.app.fx.world2d.Object2dFx;
 import ca.ntro.app.fx.world2d.World2dFx;
+import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -61,21 +62,17 @@ public class MondeBlackjack2d extends World2dFx {
 
         mainJouant = 0;
 
-        Carte2d roiJoueur = new Carte2d(13, "Trefle");
-        roiJoueur.setAfficher(true);
-        roiJoueur.initialize();
+        Main mainJoueur00 = new Main(new ArrayList<>(),100,false);
+        mainJoueur00.setWorld2d(this);
+        mainJoueur00.initialize();
 
         mainsJoueur = new ArrayList<Main>();
-        mainsJoueur.add(new Main(List.of(roiJoueur),100,false));
-        positionnerMainsJoueur();
+        mainsJoueur.add(mainJoueur00);
 
-        Carte2d roiDealer = new Carte2d(13, "Trefle");
-        roiDealer.setAfficher(true);
-        roiDealer.initialize();
-        mainDealer = new Main(List.of(roiDealer), 0, false);
-        positionnerMainDealer();
+        mainDealer = new Main(new ArrayList<>(), 0, false);
+        mainDealer.setWorld2d(this);
+        mainDealer.initialize();
         
-        //mainsJoueur.add(new Main());
         boutonDD = new BoutonDoubleDown2d();
         boutonHit = new BoutonHit2d();
         boutonStand = new BoutonStand2d();
@@ -85,7 +82,6 @@ public class MondeBlackjack2d extends World2dFx {
         boutonBet = new BoutonBet();
         boutonSplit2d = new BoutonSplit2d();
         labelArgent = new LabelArgent();
-        
         
         //boutons d'action
         addObject2d(boutonDD);
@@ -103,7 +99,6 @@ public class MondeBlackjack2d extends World2dFx {
         
         //Juste pour afficher un paquet de carte pour faire beau
         addObject2d(new Carte2d(1, "Pique", 1100, 30));
-        
     }
     
     @Override
@@ -162,6 +157,7 @@ public class MondeBlackjack2d extends World2dFx {
 	public void positionnerMainDealer() {
 		if(mainDealer != null) {
 			mainDealer.moveTo(MAIN_DEALER_POSX, MAIN_DEALER_POSY);
+			mainDealer.positionerCartes();
 		}
 		
 	}
@@ -173,7 +169,7 @@ public class MondeBlackjack2d extends World2dFx {
 		
 	}
 	
-	public void Jeu() {
+	public void demarrerJeu() {
 		mainDealer.clear();
 		mainDealer.setPlaying(true);
 		for(int i = 0; i <= 1; i++) {
@@ -182,9 +178,10 @@ public class MondeBlackjack2d extends World2dFx {
 			}
 			mainDealer.hit();
 		}
+		positionnerMainsJoueur();
+		positionnerMainDealer();
 		mainDealer.cacherCarteByIndex(0);
 		checkForWinOrBust();
-
 	}
 	
 	public void dealerPlay() {
