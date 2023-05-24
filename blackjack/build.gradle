@@ -41,7 +41,7 @@ def commonConfig = {
 
 def localConfig = {
    configure commonConfig
-   mainClass = "blackjack.MonProjetLocal"
+   mainClass = "blackjack.BlackjackLocal"
    jvmArgs('-Dsun.java2d.opengl=true')
 }
 

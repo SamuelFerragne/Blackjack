@@ -193,24 +193,26 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
 		this.setTopLeftY(y);
 	}
 
-	@Override
-	public void drawOnWorld(GraphicsContext gc) {
+    @Override
+    public void onTimePasses(double secondsElapsed) {
+    	for(Carte2d carte : getCartes()) {
+    		carte.onTimePasses(secondsElapsed);
+    	}
+    }
+
+	public void positionerCartes() {
 		int decalage = 0;
     	for(Carte2d carte : getCartes()) {
-    		carte.drawOnWorld(gc);
     		carte.moveTo(this.getTopLeftX() + decalage, this.getTopLeftY());
-    		//carte.setAfficher(true);
     		decalage += 50;
     	}
-    	
-    	decalage = 0;
-    	//debug
-    	/*for(Main main : this.getWorld2d().mainsJoueur) {
-    		gc.fillText(""+main.score, 520 + decalage, 500);
-    		decalage += 20;
-    	}
-    	gc.fillText(""+this.getWorld2d().mainDealer.getScore(), 500, 500);*/
+	}
 
+	@Override
+	public void drawOnWorld(GraphicsContext gc) {
+    	for(Carte2d carte : getCartes()) {
+    		carte.drawOnWorld(gc);
+    	}
 	}
 	
 	public void afficherCarteByIndex(int i) {
@@ -252,6 +254,8 @@ public class Main extends ObjetBlackjack2d implements ModelValue {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+
 	
 	
 }
