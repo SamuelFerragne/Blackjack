@@ -24,6 +24,9 @@ public class Carte2d extends ObjetBlackjack2d {
 	
 	private boolean afficher = false;
 	
+	private double destinationX = 0;
+	private double destinationY = 0;
+	
 	public int getNumero() {
 		return numero;
 	}
@@ -48,7 +51,7 @@ public class Carte2d extends ObjetBlackjack2d {
 		this.velocity = velocity;
 	}
 
-	private double velocity = 200; 
+	private double velocity = 1500; 
 	
     private static final double DUREE_ANIMATION = 2;
     private double secondesRestantesRotation = 2;
@@ -139,7 +142,39 @@ public class Carte2d extends ObjetBlackjack2d {
 	    if(secondesRestantesRotation > 0) {
 	    	secondesRestantesRotation -= secondsElapsed;
 	    }
+	    
+	    if((getSpeedX() > 0
+	    		&& getTopLeftX() >= destinationX)) {
 
+	    	atteindreDestinationX();
+
+	    }else if(getSpeedX() < 0
+	    		&& getTopLeftX() <= destinationX) {
+	    	
+	    	atteindreDestinationX();
+	    }
+
+	    if((getSpeedY() > 0
+	    		&& getTopLeftY() >= destinationY)) {
+
+	    	atteindreDestinationY();
+
+	    }else if(getSpeedY() < 0
+	    		&& getTopLeftY() <= destinationY) {
+	    	
+	    	atteindreDestinationY();
+	    }
+
+	}
+
+	private void atteindreDestinationX() {
+		setTopLeftX(destinationX);
+		setSpeedX(0);
+	}
+
+	private void atteindreDestinationY() {
+		setTopLeftY(destinationY);
+		setSpeedY(0);
 	}
 	
 	public void animationRotation() {
@@ -147,31 +182,24 @@ public class Carte2d extends ObjetBlackjack2d {
 	}
 	
 	public void moveTo (double x, double y) {
-		this.setTopLeftX(x);
-		this.setTopLeftY(y);
+		destinationX = x;
+		destinationY = y;
 		
-		//Le mouvement des cartes ne fonctionne ce déplace instantanement
-		//a cause de l'implementation des mains
-		/*
 		double distanceRestanteX = (x - this.getTopLeftX());
 		double distanceRestanteY = (y - this.getTopLeftY());
-	
-		double velocityX = distanceRestanteX / distanceRestanteY * velocity;
-		double velocityY = distanceRestanteY / distanceRestanteX * velocity;
-		
+
+		double velocityX = distanceRestanteX / getWorld2d().getWidth() * velocity;
+		double velocityY = distanceRestanteY / getWorld2d().getHeight() * velocity;
 		
 		this.setSpeedX(velocityX);
 		this.setSpeedY(velocityY);
 		
-		if(distanceRestanteX < 1) {
-			this.setTopLeftX(x);
-			this.setSpeedX(0);
+		if(Math.abs(distanceRestanteX) < 0.2) {
+			atteindreDestinationX();
 		}
-		if(distanceRestanteY < 1) {
-			this.setTopLeftY(y);
-			this.setSpeedY(0);
+
+		if(Math.abs(distanceRestanteY) < 0.2) {
+			atteindreDestinationY();
 		}
-		*/
-		
 	}
 }

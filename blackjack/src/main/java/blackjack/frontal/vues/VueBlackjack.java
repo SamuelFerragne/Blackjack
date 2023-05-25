@@ -69,14 +69,8 @@ public class VueBlackjack extends ViewFx {
 		canvasPartie.afficherFps(fps);
 	}
 
-	public void afficherPong2d(MondeBlackjack2d mondeBlackjack2d) {
+	public void afficherMondeBlackjack2d(MondeBlackjack2d mondeBlackjack2d) {
 		mondeBlackjack2d.drawOn(canvasPartie);
-	}
-
-
-	public void afficherMains(MondeBlackjack2d mondeBlackjack2d) {
-		mondeBlackjack2d.afficherMainsJoueur();
-		
 	}
 
 }
