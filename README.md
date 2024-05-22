@@ -5,18 +5,19 @@ Travail effectué:
 Ajout des ressources imagesCartes et imagesBoutons
 Affichage des mains et de leurs carte respective
 Affichage des boutons lorsqu'ils sont actifs
-A̶n̶i̶m̶a̶t̶i̶o̶n̶ ̶d̶u̶ ̶m̶o̶u̶v̶e̶m̶e̶n̶t̶ ̶d̶e̶s̶ ̶c̶a̶r̶t̶e̶s̶ (Non fonctionnel avec l'implementation des mains)
+Animation du mouvement des cartes ~~(Non fonctionnel avec l'implementation des mains)~~
 Logique d'affichage des cartes du dealer
 Affichage des mains split du joueur
 
 Liam Brouillard-Adjaïlia:
-Gestion des interactions user
-Partie non-graphique des boutons
-Gestion des évènements clic dans le monde2d
-Partie non-graphique des carte2d et main
-
-Médéric Bélec
 Logique du jeu de BlackJack
-Tour de jeu entre mainsJoueur et Dealer
 Vérification de victoire et défaite
 Gestion des paris
+Gestion des interactions user
+Gestion des évènements clic dans le monde2d
+
+~~Médéric Bélec~~
+~~Logique du jeu de BlackJack~~
+~~Tour de jeu entre mainsJoueur et Dealer~~
+~~Vérification de victoire et défaite~~
+~~Gestion des paris~~
