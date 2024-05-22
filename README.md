@@ -15,6 +15,9 @@ Gestion des paris <br/>
 Gestion des interactions user <br/>
 Gestion des évènements clic dans le monde2d <br/>
 
+Mathieu Bergeron : <br/>
+Hotfix problème d'affichage d'animation <br/>
+
 ~~Médéric Bélec~~ <br/>
 ~~Logique du jeu de BlackJack~~ <br/>
 ~~Tour de jeu entre mainsJoueur et Dealer~~ <br/>
